@@ -1,15 +1,17 @@
 # DDSCaseStudy1
 
-To start contributing:<br/>
+To start contributing you can use git from command line or use [GitHub Desktop](https://desktop.github.com)
+
+###Instructions for contributing with git from command line:
+
+1. Clone the repo:<br>
 <code>
-\# first clone the repo
 git clone https://github.com/post2web/DDSCaseStudy1.git
 </code>
-<br>
-After you have made changes to the code:
-<br>
+2. Make changes - edit/create/delete files and folders.
+3. Send your changes to github.<br/>
 <code>
-\# add new files you have created
+\# contribute all the changes your made
 git add -A
 \# commit the changes to your local git
 git commit -m "description of changes"
