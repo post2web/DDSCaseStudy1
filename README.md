@@ -18,3 +18,8 @@ git commit -m "description of changes"
 # send the changes to github
 git push
 ```
+
+### Todo list:
+- [x] Example of done task
+- [ ] Create file structure of the project - empty files and folders 
+- [ ] Add more Todo tasks
