@@ -5,7 +5,9 @@ To start contributing:<br/>
 \# first clone the repo
 git clone https://github.com/post2web/DDSCaseStudy1.git
 </code>
+<br>
 After you have made changes to the code:
+<br>
 <code>
 \# add new files you have created
 git add -A
