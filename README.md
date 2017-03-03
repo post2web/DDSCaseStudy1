@@ -8,7 +8,7 @@ To start contributing you can use git from command line or use [GitHub Desktop](
 ```sh
 git clone https://github.com/post2web/DDSCaseStudy1.git
 ```
-2. Sync with the repo:
+2. Sync with the repo:<br>
 ```sh
 git pull
 ```
