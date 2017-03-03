@@ -4,16 +4,16 @@ To start contributing you can use git from command line or use [GitHub Desktop](
 
 ###Instructions for contributing with git from command line:
 
-1. Clone the repo (only once):<br>
+* Clone the repo (only once):<br>
 ```sh
 git clone https://github.com/post2web/DDSCaseStudy1.git
 ```
-2. Sync with the repo:<br>
+* Sync with the repo:<br>
 ```sh
 git pull
 ```
-3. Make changes - edit/create/delete files and folders.
-4. Send your changes to github.<br/>
+* Make changes - edit/create/delete files and folders.
+* Send your changes to github.<br/>
 ```sh
 # contribute all the changes your made
 git add -A
