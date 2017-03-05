@@ -26,8 +26,9 @@ git push
 ### Todo list: (write your name on the task before you start it)
 - [x] Create file structure of the project - Ivelin
 - [ ] Write download data code in source/download.R
-- [ ] Add methods in the Makefile: download_data and delete_data
-- [ ] Write clean data code in source/clean.R
-- [ ] Add methods in the Makefile: clean_data
+- [x-LVB ] Add methods in the Makefile: download_data and delete_data . --LVB: These are really 1 united task. I have created a Makefile to download the data and clean. I am starting with EDS. GDP is in good shape at the onset.  We can have a separate Makefile to download the data. I am writing one to clean it.  We need another for creating a Makefile to Merge.  Then a Master Makefile to pull the separate Makefiles together.
+- [x -LVB ] Write clean data code in source/clean.R
+- [x-LVB ] Add methods in the Makefile: clean_data
 - [ ] Write a draft code in Analysis.Rmd
-- [ ] Add more Todo tasks as we go
+- [ ] Merge Makefile with code to Merge.
+- [ ] Master Makefile to pull Download/Clean Makefile & Merge Makefile together.
