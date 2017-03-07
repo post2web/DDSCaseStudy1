@@ -111,7 +111,28 @@ tail (GDPraw, 10)
 summary (GDPraw)
 dim(GDPraw)
 
-#Remove the first 3 Rows that are not needed.
-GDPraw <- GDPraw [-c(1:3), ]
-head(GDPraw, 10)
+#Remove the first 4 Rows that are not needed.
+GDPdata <- GDPraw [-c(1:4), ]
+head(GDPdata, 10)
 
+#Remove the bottom of GDPclean comments and  area GDP list, ie world, sub-sahara, east asiaa & pacific, etc. 
+GDPdata <- GDPdata[-237:-216,]
+
+#Remove the the unused columns from the data.frame (using keep as the variable we change to drop the columns)
+keep <- c(1,5)
+GDPdata <- GDPdata[,keep]
+
+#Name columns COuntrycode and GPD
+colnames(GDPdata) <- c("CountryCode","GDP")
+
+
+#Remove commas from the GDP, first change GDPdata$GDP to character string, then remove the commas, finally convert to numeric
+GDPdata$GDP <- as.character(GDPdata$GDP)
+GDPdata$GDP <- gsub(",","", GDPdata$GDP)
+GDPdata$GDP <- as.numeric(GDPdata$GDP)
+
+#Remove empty lines from data frames
+GDPdata <- subset (x=GDPdata, CountryCode !="")
+
+#Merge the EDSdata to the GPDdata into a new dataframe
+EDSandGDPdata <- merge (EDSdata,GDPdata)
