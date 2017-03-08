@@ -4,6 +4,7 @@
 #Clean EDS and GDP data for Case Study 1 in class Doing Data Science 6306-404
 #Goal is to use Country Short Name in column 'AE' in the EDS STATS Country file as the main sort key to answer questions about income.
 
+#set your working directory to where the parent Github directory is located on your computer.
 #This needs to be unique for each person who downloads and runs the data. 
 
 #change working directory to source folder
@@ -27,3 +28,7 @@ source("merge.R")
 
 #return working directory back to project parent directory
 setwd(location)
+
+#Run the R markdown file and code
+library('rmarkdown')
+rmarkdown::render(paste(location,"/EducationvsGDP.Rmd",sep=""))
