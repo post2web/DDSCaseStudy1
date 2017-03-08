@@ -25,7 +25,8 @@ EDSraw <- read.csv ("EDSTATS_CountryDown.csv", header = TRUE, sep = ',')
 cat ("EDS read into raw data file - EDSraw\n")
 
 #Download GDP data
-
+download.file ("https://raw.githubusercontent.com/post2web/DDSCaseStudy1/master/data/GDP.csv", 
+							 destfile ="GDPdown.csv")
 #Read GDP Country file
 GDPraw <- read.csv ("GDPdown.csv", header = TRUE, sep = ',')
 cat ("GDP read into raw data file - GDPraw\n")
