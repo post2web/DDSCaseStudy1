@@ -13,10 +13,11 @@ df <- read.csv(paste(data_path, "GDP.csv", sep = ''), header = TRUE)
 # Income.Group - to answer the questions
 df <- df[, c('CountryCode', 'Income.Group')]
 
-# trim empty space in CountryCode, CountryName and GDP
+# trim empty space in all columns
 df <- data.frame(lapply(df, trimws))
 
 # write the resulting tidy data
 write.table(df, paste(data_path, "income_groups.csv", sep = ''), row.names = FALSE)
 
 cat("Income grpus data was cleaned\n")
+

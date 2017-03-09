@@ -1,191 +1,191 @@
-"CountryCode" "ID" "CountryName" "GDP"
-"USA" 1 "United States" 39
-"CHN" 102 "China" 177
-"JPN" 113 "Japan" 142
-"DEU" 124 "Germany" 99
-"FRA" 135 "France" 65
-"GBR" 146 "United Kingdom" 62
-"BRA" 157 "Brazil" 60
-"RUS" 168 "Russian Federation" 57
-"ITA" 179 "Italy" 56
-"IND" 2 "India" 15
-"CAN" 13 "Canada" 13
-"AUS" 24 "Australia" 10
-"ESP" 35 "Spain" 8
-"MEX" 46 "Mexico" 5
-"KOR" 57 "Korea, Rep." 3
-"IDN" 68 "Indonesia" 181
-"TUR" 79 "Turkey" 175
-"NLD" 89 "Netherlands" 173
-"SAU" 100 "Saudi Arabia" 169
-"CHE" 103 "Switzerland" 160
-"SWE" 104 "Sweden" 147
-"IRN" 105 "Iran, Islamic Rep." 146
-"NOR" 106 "Norway" 138
-"POL" 107 "Poland" 136
-"BEL" 108 "Belgium" 135
-"ARG" 109 "Argentina" 133
-"AUT" 110 "Austria" 117
-"ZAF" 111 "South Africa" 116
-"VEN" 112 "Venezuela, RB" 115
-"COL" 114 "Colombia" 113
-"THA" 115 "Thailand" 112
-"ARE" 116 "United Arab Emirates" 108
-"DNK" 117 "Denmark" 106
-"MYS" 118 "Malaysia" 104
-"SGP" 119 "Singapore" 94
-"CHL" 120 "Chile" 92
-"HKG" 121 "Hong Kong SAR, China" 91
-"EGY" 122 "Egypt, Arab Rep." 89
-"NGA" 123 "Nigeria" 88
-"ISR" 125 "Israel" 87
-"PHL" 126 "Philippines" 86
-"GRC" 127 "Greece" 83
-"FIN" 128 "Finland" 82
-"PAK" 129 "Pakistan" 77
-"PRT" 130 "Portugal" 74
-"IRL" 131 "Ireland" 73
-"IRQ" 132 "Iraq" 72
-"DZA" 133 "Algeria" 71
-"PER" 134 "Peru" 70
-"KAZ" 136 "Kazakhstan" 69
-"CZE" 137 "Czech Republic" 55
-"ROM" 138 "Romania" 54
-"UKR" 139 "Ukraine" 48
-"QAT" 140 "Qatar" 46
-"NZL" 141 "New Zealand" 42
-"KWT" 142 "Kuwait" 41
-"VNM" 143 "Vietnam" 38
-"HUN" 144 "Hungary" 27
-"BGD" 145 "Bangladesh" 24
-"AGO" 147 "Angola" 23
-"PRI" 148 "Puerto Rico" 22
-"MAR" 149 "Morocco" 189
-"SVK" 150 "Slovak Republic" 187
-"ECU" 151 "Ecuador" 180
-"SYR" 152 "Syrian Arab Republic" 171
-"OMN" 153 "Oman" 164
-"CUB" 154 "Cuba" 162
-"AZE" 155 "Azerbaijan" 161
-"BLR" 156 "Belarus" 159
-"LKA" 158 "Sri Lanka" 152
-"HRV" 159 "Croatia" 151
-"DOM" 160 "Dominican Republic" 150
-"SDN" 161 "Sudan" 149
-"LUX" 162 "Luxembourg" 148
-"UZB" 163 "Uzbekistan" 145
-"BGR" 164 "Bulgaria" 144
-"GTM" 165 "Guatemala" 143
-"URY" 166 "Uruguay" 137
-"TUN" 167 "Tunisia" 131
-"SVN" 169 "Slovenia" 130
-"CRI" 170 "Costa Rica" 129
-"MAC" 171 "Macao SAR, China" 128
-"LBN" 172 "Lebanon" 127
-"LTU" 173 "Lithuania" 126
-"ETH" 174 "Ethiopia" 125
-"GHA" 175 "Ghana" 124
-"KEN" 176 "Kenya" 123
-"SRB" 177 "Serbia" 114
-"PAN" 178 "Panama" 111
-"YEM" 180 "Yemen, Rep." 110
-"TKM" 181 "Turkmenistan" 109
-"JOR" 182 "Jordan" 105
-"BHR" 183 "Bahrain" 97
-"LVA" 184 "Latvia" 96
-"TZA" 185 "Tanzania" 95
-"BOL" 186 "Bolivia" 93
-"PRY" 187 "Paraguay" 85
-"CMR" 188 "Cameroon" 84
-"CIV" 189 "Côte d'Ivoire" 81
-"SLV" 3 "El Salvador" 80
-"TTO" 4 "Trinidad and Tobago" 79
-"CYP" 5 "Cyprus" 76
-"EST" 6 "Estonia" 75
-"ZMB" 7 "Zambia" 68
-"AFG" 8 "Afghanistan" 67
-"UGA" 9 "Uganda" 53
-"NPL" 10 "Nepal" 51
-"HND" 11 "Honduras" 50
-"GAB" 12 "Gabon" 49
-"GNQ" 14 "Equatorial Guinea" 45
-"BIH" 15 "Bosnia and Herzegovina" 44
-"ZAR" 16 "Congo, Dem. Rep." 43
-"BRN" 17 "Brunei Darussalam" 40
-"GEO" 18 "Georgia" 37
-"PNG" 19 "Papua New Guinea" 36
-"JAM" 20 "Jamaica" 35
-"BWA" 21 "Botswana" 34
-"MOZ" 22 "Mozambique" 33
-"SEN" 23 "Senegal" 32
-"KHM" 25 "Cambodia" 31
-"COG" 26 "Congo, Rep." 30
-"ISL" 27 "Iceland" 29
-"NAM" 28 "Namibia" 28
-"TCD" 29 "Chad" 26
-"ALB" 30 "Albania" 25
-"NIC" 31 "Nicaragua" 21
-"MUS" 32 "Mauritius" 20
-"BFA" 33 "Burkina Faso" 19
-"MLI" 34 "Mali" 18
-"MNG" 36 "Mongolia" 17
-"SSD" 37 "South Sudan" 16
-"MDG" 38 "Madagascar" 186
-"ARM" 39 "Armenia" 185
-"ZWE" 40 "Zimbabwe" 184
-"MKD" 41 "Macedonia, FYR" 183
-"LAO" 42 "Lao PDR" 182
-"MLT" 43 "Malta" 178
-"BHS" 44 "Bahamas, The" 176
-"HTI" 45 "Haiti" 168
-"BEN" 47 "Benin" 167
-"MDA" 48 "Moldova" 166
-"RWA" 49 "Rwanda" 165
-"TJK" 50 "Tajikistan" 158
-"NER" 51 "Niger" 157
-"KGZ" 52 "Kyrgyz Republic" 156
-"KSV" 53 "Kosovo" 155
-"MCO" 54 "Monaco" 154
-"GIN" 55 "Guinea" 141
-"BMU" 56 "Bermuda" 140
-"SUR" 58 "Suriname" 139
-"MNE" 59 "Montenegro" 121
-"MWI" 60 "Malawi" 120
-"BRB" 61 "Barbados" 119
-"MRT" 62 "Mauritania" 118
-"FJI" 63 "Fiji" 103
-"TGO" 64 "Togo" 102
-"SLE" 65 "Sierra Leone" 101
-"SWZ" 66 "Swaziland" 100
-"ERI" 67 "Eritrea" 98
-"GUY" 69 "Guyana" 66
-"ABW" 70 "Aruba" 64
-"BDI" 71 "Burundi" 63
-"LSO" 72 "Lesotho" 61
-"MDV" 73 "Maldives" 59
-"CAF" 74 "Central African Republic" 58
-"CPV" 75 "Cape Verde" 14
-"BTN" 76 "Bhutan" 12
-"LBR" 77 "Liberia" 11
-"BLZ" 78 "Belize" 9
-"TMP" 80 "Timor-Leste" 7
-"LCA" 81 "St. Lucia" 6
-"ATG" 82 "Antigua and Barbuda" 4
-"SYC" 83 "Seychelles" 2
-"SLB" 84 "Solomon Islands" 1
-"GMB" 85 "Gambia, The" 188
-"GNB" 86 "Guinea-Bissau" 179
-"VUT" 87 "Vanuatu" 174
-"GRD" 88 "Grenada" 172
-"KNA" 88 "St. Kitts and Nevis" 172
-"VCT" 90 "St. Vincent and the Grenadines" 170
-"WSM" 91 "Samoa" 163
-"COM" 92 "Comoros" 153
-"DMA" 93 "Dominica" 134
-"TON" 94 "Tonga" 132
-"FSM" 95 "Micronesia, Fed. Sts." 107
-"STP" 96 "São Tomé and Principe" 90
-"PLW" 97 "Palau" 78
-"MHL" 98 "Marshall Islands" 52
-"KIR" 99 "Kiribati" 47
-"TUV" 101 "Tuvalu" 122
+"CountryCode" "CountryName" "GDP"
+"USA" "United States" 16244600
+"CHN" "China" 8227103
+"JPN" "Japan" 5959718
+"DEU" "Germany" 3428131
+"FRA" "France" 2612878
+"GBR" "United Kingdom" 2471784
+"BRA" "Brazil" 2252664
+"RUS" "Russian Federation" 2014775
+"ITA" "Italy" 2014670
+"IND" "India" 1841710
+"CAN" "Canada" 1821424
+"AUS" "Australia" 1532408
+"ESP" "Spain" 1322965
+"MEX" "Mexico" 1178126
+"KOR" "Korea, Rep." 1129598
+"IDN" "Indonesia" 878043
+"TUR" "Turkey" 789257
+"NLD" "Netherlands" 770555
+"SAU" "Saudi Arabia" 711050
+"CHE" "Switzerland" 631173
+"SWE" "Sweden" 523806
+"IRN" "Iran, Islamic Rep." 514060
+"NOR" "Norway" 499667
+"POL" "Poland" 489795
+"BEL" "Belgium" 483262
+"ARG" "Argentina" 475502
+"AUT" "Austria" 394708
+"ZAF" "South Africa" 384313
+"VEN" "Venezuela, RB" 381286
+"COL" "Colombia" 369606
+"THA" "Thailand" 365966
+"ARE" "United Arab Emirates" 348595
+"DNK" "Denmark" 314887
+"MYS" "Malaysia" 305033
+"SGP" "Singapore" 274701
+"CHL" "Chile" 269869
+"HKG" "Hong Kong SAR, China" 263259
+"EGY" "Egypt, Arab Rep." 262832
+"NGA" "Nigeria" 262597
+"ISR" "Israel" 258217
+"PHL" "Philippines" 250182
+"GRC" "Greece" 249099
+"FIN" "Finland" 247546
+"PAK" "Pakistan" 225143
+"PRT" "Portugal" 212274
+"IRL" "Ireland" 210771
+"IRQ" "Iraq" 210280
+"DZA" "Algeria" 205789
+"PER" "Peru" 203790
+"KAZ" "Kazakhstan" 203521
+"CZE" "Czech Republic" 196446
+"ROM" "Romania" 192711
+"UKR" "Ukraine" 176309
+"QAT" "Qatar" 171476
+"NZL" "New Zealand" 167347
+"KWT" "Kuwait" 160913
+"VNM" "Vietnam" 155820
+"HUN" "Hungary" 124600
+"BGD" "Bangladesh" 116355
+"AGO" "Angola" 114147
+"PRI" "Puerto Rico" 101496
+"MAR" "Morocco" 95982
+"SVK" "Slovak Republic" 91149
+"ECU" "Ecuador" 84040
+"SYR" "Syrian Arab Republic" 73672
+"OMN" "Oman" 69972
+"CUB" "Cuba" 68234
+"AZE" "Azerbaijan" 66605
+"BLR" "Belarus" 63267
+"LKA" "Sri Lanka" 59423
+"HRV" "Croatia" 59228
+"DOM" "Dominican Republic" 59047
+"SDN" "Sudan" 58769
+"LUX" "Luxembourg" 55178
+"UZB" "Uzbekistan" 51113
+"BGR" "Bulgaria" 50972
+"GTM" "Guatemala" 50234
+"URY" "Uruguay" 49920
+"TUN" "Tunisia" 45662
+"SVN" "Slovenia" 45279
+"CRI" "Costa Rica" 45104
+"MAC" "Macao SAR, China" 43582
+"LBN" "Lebanon" 42945
+"LTU" "Lithuania" 42344
+"ETH" "Ethiopia" 41605
+"GHA" "Ghana" 40711
+"KEN" "Kenya" 40697
+"SRB" "Serbia" 37489
+"PAN" "Panama" 36253
+"YEM" "Yemen, Rep." 35646
+"TKM" "Turkmenistan" 35164
+"JOR" "Jordan" 31015
+"BHR" "Bahrain" 29044
+"LVA" "Latvia" 28373
+"TZA" "Tanzania" 28242
+"BOL" "Bolivia" 27035
+"PRY" "Paraguay" 25502
+"CMR" "Cameroon" 25322
+"CIV" "Côte d'Ivoire" 24680
+"SLV" "El Salvador" 23864
+"TTO" "Trinidad and Tobago" 23320
+"CYP" "Cyprus" 22767
+"EST" "Estonia" 22390
+"ZMB" "Zambia" 20678
+"AFG" "Afghanistan" 20497
+"UGA" "Uganda" 19881
+"NPL" "Nepal" 18963
+"HND" "Honduras" 18434
+"GAB" "Gabon" 18377
+"GNQ" "Equatorial Guinea" 17697
+"BIH" "Bosnia and Herzegovina" 17466
+"ZAR" "Congo, Dem. Rep." 17204
+"BRN" "Brunei Darussalam" 16954
+"GEO" "Georgia" 15747
+"PNG" "Papua New Guinea" 15654
+"JAM" "Jamaica" 14755
+"BWA" "Botswana" 14504
+"MOZ" "Mozambique" 14244
+"SEN" "Senegal" 14046
+"KHM" "Cambodia" 14038
+"COG" "Congo, Rep." 13678
+"ISL" "Iceland" 13579
+"NAM" "Namibia" 13072
+"TCD" "Chad" 12887
+"ALB" "Albania" 12648
+"NIC" "Nicaragua" 10507
+"MUS" "Mauritius" 10486
+"BFA" "Burkina Faso" 10441
+"MLI" "Mali" 10308
+"MNG" "Mongolia" 10271
+"SSD" "South Sudan" 10220
+"MDG" "Madagascar" 9975
+"ARM" "Armenia" 9951
+"ZWE" "Zimbabwe" 9802
+"MKD" "Macedonia, FYR" 9613
+"LAO" "Lao PDR" 9418
+"MLT" "Malta" 8722
+"BHS" "Bahamas, The" 8149
+"HTI" "Haiti" 7843
+"BEN" "Benin" 7557
+"MDA" "Moldova" 7253
+"RWA" "Rwanda" 7103
+"TJK" "Tajikistan" 6972
+"NER" "Niger" 6773
+"KGZ" "Kyrgyz Republic" 6475
+"KSV" "Kosovo" 6445
+"MCO" "Monaco" 6075
+"GIN" "Guinea" 5632
+"BMU" "Bermuda" 5474
+"SUR" "Suriname" 5012
+"MNE" "Montenegro" 4373
+"MWI" "Malawi" 4264
+"BRB" "Barbados" 4225
+"MRT" "Mauritania" 4199
+"FJI" "Fiji" 3908
+"TGO" "Togo" 3814
+"SLE" "Sierra Leone" 3796
+"SWZ" "Swaziland" 3744
+"ERI" "Eritrea" 3092
+"GUY" "Guyana" 2851
+"ABW" "Aruba" 2584
+"BDI" "Burundi" 2472
+"LSO" "Lesotho" 2448
+"MDV" "Maldives" 2222
+"CAF" "Central African Republic" 2184
+"CPV" "Cape Verde" 1827
+"BTN" "Bhutan" 1780
+"LBR" "Liberia" 1734
+"BLZ" "Belize" 1493
+"TMP" "Timor-Leste" 1293
+"LCA" "St. Lucia" 1239
+"ATG" "Antigua and Barbuda" 1134
+"SYC" "Seychelles" 1129
+"SLB" "Solomon Islands" 1008
+"GMB" "Gambia, The" 917
+"GNB" "Guinea-Bissau" 822
+"VUT" "Vanuatu" 787
+"GRD" "Grenada" 767
+"KNA" "St. Kitts and Nevis" 767
+"VCT" "St. Vincent and the Grenadines" 713
+"WSM" "Samoa" 684
+"COM" "Comoros" 596
+"DMA" "Dominica" 480
+"TON" "Tonga" 472
+"FSM" "Micronesia, Fed. Sts." 326
+"STP" "São Tomé and Principe" 263
+"PLW" "Palau" 228
+"MHL" "Marshall Islands" 182
+"KIR" "Kiribati" 175
+"TUV" "Tuvalu" 40

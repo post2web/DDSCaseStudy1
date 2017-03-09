@@ -11,18 +11,17 @@ df <- read.csv(paste(data_path, "EDSTATS_Country.csv", sep = ''),
 
 # get a subset of rows with needed information
 # THE numerical ids are not unique and are not needed for merging
-df <- df[c('V1', 'V2', 'V4', 'V5')]
+df <- df[c('V1', 'V4', 'V5')]
 
 # rename columns
-names(df) <- c('CountryCode', 'ID', 'CountryName', 'GDP')
+names(df) <- c('CountryCode', 'CountryName', 'GDP')
 
 # trim empty space in CountryCode, CountryName and GDP
 df <- data.frame(lapply(df, trimws))
 
 # convert GDP to numeric
+df$GDP <- gsub(",","", df$GDP)
 df$GDP <- as.numeric(df$GDP)
-# convert IDs to numeric
-df$ID <- as.numeric(df$ID)
 
 # ensure that there is no NANs in GDP
 df <- df[is.finite(df$GDP), ]
