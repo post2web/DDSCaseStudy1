@@ -6,7 +6,7 @@ if (.Platform$OS.type == 'unix') {
 }
 
 #Read the GDP csv file
-df <- read.csv(paste(data_path, "GDP.csv", sep = ''), header = TRUE)
+df <- read.csv(paste(data_path, "GDP.csv", sep = ''), header = TRUE, encoding='UTF-8')
 
 # To answer all the questions we need:
 # CountryCode - to merge

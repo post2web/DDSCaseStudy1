@@ -6,8 +6,8 @@ if (.Platform$OS.type == 'unix') {
 }
 
 #Read EDS Country file
-df <- read.csv(paste(data_path, "EDSTATS_Country.csv", sep = ''),
-               header = FALSE, sep = ',', skip = 5, nrows = 190)
+file_obj = file(paste(data_path, "EDSTATS_Country.csv", sep = ''))
+df <- read.csv(file_obj, header = FALSE, sep = ',', skip = 5, nrows = 190)
 
 # get a subset of rows with needed information
 # THE numerical ids are not unique and are not needed for merging
@@ -15,6 +15,12 @@ df <- df[c('V1', 'V4', 'V5')]
 
 # rename columns
 names(df) <- c('CountryCode', 'CountryName', 'GDP')
+
+# fix in encoding
+library(stringi)
+df$CountryName <- stri_encode(df$CountryName, "", "UTF-8")
+df$CountryName <- stri_trans_general(df$CountryName, "Latin-ASCII")
+
 
 # trim empty space in CountryCode, CountryName and GDP
 df <- data.frame(lapply(df, trimws))

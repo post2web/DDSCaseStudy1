@@ -5,12 +5,13 @@ output:
     keep_md: true
 ---
 ```{r}
+# install.packages('knitr', repos = c('http://rforge.net', 'http://cran.rstudio.org'), type = 'source')
 if (.Platform$OS.type == 'unix') {
   data_path = 'data/'
 } else {
   data_path = 'data\\'
 }
-Data = read.table(paste(data_path, "merged_data.csv", sep = ''), header = TRUE)
+Data = read.table(paste(data_path, "merged_data.csv", sep = ''), header = TRUE, encoding='UTF-8')
 ```
 
 #Introduction
@@ -35,21 +36,33 @@ print(Data[c(13), ])
 ###3. What arethe average GDP rankings for the "High income: OECD" and "High Income:nonOECD" groups?
 
 Comments
-```{r,cache=TRUE}
-nrow(EDSandGDPdata)
+```{r}
+Data$GDP.rankings = rank(Data$GDP)
+OECD_rankings = Data$GDP.rankings[Data$Income.Group == "High income: OECD"]
+print(mean(OECD_rankings))
+nonOECD_rankings = Data$GDP.rankings[Data$Income.Group == "High income: nonOECD"]
+print(mean(nonOECD_rankings))
 ```
-###4. Plot the GDP for all the countries, coloring the plot by income groups.
+###4. 1	Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.
 
 COmments
-```{r,cache=TRUE}
-nrow(EDSandGDPdata)
+```{r kable}
+library(ggplot2)
+qplot(Data$GDP, Data$GDP.rankings, color = Data$Income.Group)
 ```
 ###5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group.
 ###   How many countries are "lower middle income" but within the 38 nations with the highest GDP?
 
 COmments
-```{r,cache=TRUE}
-nrow(EDSandGDPdata)
+```{r}
+library(dplyr)
+Data$QuantGroup <- ntile(Data$GDP.rankings, 5)
+# I dont know what this means: Make a table versus Income.Group
+#     is this is?
+knitr::kable(Data[c('QuantGroup', 'Income.Group')])
+top38 <- tail(Data, n = 38)
+# this answer: How many countries are "lower middle income" but within the 38 nations with the highest GDP
+print(NROW(top38[top38$Income.Group == 'Lower middle income', ]))
 ```
 
 COnclusion
