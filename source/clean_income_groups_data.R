@@ -19,3 +19,4 @@ df <- data.frame(lapply(df, trimws))
 # write the resulting tidy data
 write.table(df, paste(data_path, "income_groups.csv", sep = ''), row.names = FALSE)
 
+cat("Income grpus data was cleaned\n")

@@ -1,6 +1,6 @@
 # R code to download csv files for the project
 
-install.packages("downloader") 
+install.packages("downloader", repos = structure(c(CRAN="http://cran.r-project.org"))) 
 require(downloader)
 
 if (.Platform$OS.type == 'unix') {
@@ -17,4 +17,5 @@ cat("EDS Country Data downloaded")
 #Download GDP data
 download.file(url = "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv", 
 							destfile = paste(data_path, "GDP.csv", sep = ''))
-cat("GDP Data downloaded")
+
+cat("GDP Data downloaded\n")

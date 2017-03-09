@@ -29,3 +29,5 @@ df <- df[is.finite(df$GDP), ]
 
 # write the resulting tidy data
 write.table(df, paste(data_path, "countries.csv", sep = ''), row.names = FALSE)
+
+cat("Country data was cleaned\n")
