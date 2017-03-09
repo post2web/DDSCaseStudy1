@@ -17,4 +17,5 @@ df <- df[, c('CountryCode', 'Income.Group')]
 df <- data.frame(lapply(df, trimws))
 
 # write the resulting tidy data
-write.table(df, paste(data_path, "income_groups.csv", sep = ''), sep = ',', row.names = FALSE)
+write.table(df, paste(data_path, "income_groups.csv", sep = ''), row.names = FALSE)
+

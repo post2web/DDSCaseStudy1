@@ -28,4 +28,4 @@ df$ID <- as.numeric(df$ID)
 df <- df[is.finite(df$GDP), ]
 
 # write the resulting tidy data
-write.table(df, paste(data_path, "countries.csv", sep = ''), sep = ',', row.names = FALSE)
+write.table(df, paste(data_path, "countries.csv", sep = ''), row.names = FALSE)
