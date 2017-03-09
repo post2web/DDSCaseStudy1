@@ -11,10 +11,10 @@ if (.Platform$OS.type == 'unix') {
 
 #Download EDS Country data
 download.file(url = 'https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv',
-              destfile = paste(data_path, "EDSTATS_Country.csv"))
+              destfile = paste(data_path, "EDSTATS_Country.csv", sep = ''))
 cat("EDS Country Data downloaded")
 
 #Download GDP data
 download.file(url = "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv", 
-							destfile = paste(data_path, "GDP.csv"))
+							destfile = paste(data_path, "GDP.csv", sep = ''))
 cat("GDP Data downloaded")

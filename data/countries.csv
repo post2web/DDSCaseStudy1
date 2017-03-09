@@ -1,0 +1,191 @@
+"CountryCode","CountryName","GDP"
+"USA","United States",39
+"CHN","China",177
+"JPN","Japan",142
+"DEU","Germany",99
+"FRA","France",65
+"GBR","United Kingdom",62
+"BRA","Brazil",60
+"RUS","Russian Federation",57
+"ITA","Italy",56
+"IND","India",15
+"CAN","Canada",13
+"AUS","Australia",10
+"ESP","Spain",8
+"MEX","Mexico",5
+"KOR","Korea, Rep.",3
+"IDN","Indonesia",181
+"TUR","Turkey",175
+"NLD","Netherlands",173
+"SAU","Saudi Arabia",169
+"CHE","Switzerland",160
+"SWE","Sweden",147
+"IRN","Iran, Islamic Rep.",146
+"NOR","Norway",138
+"POL","Poland",136
+"BEL","Belgium",135
+"ARG","Argentina",133
+"AUT","Austria",117
+"ZAF","South Africa",116
+"VEN","Venezuela, RB",115
+"COL","Colombia",113
+"THA","Thailand",112
+"ARE","United Arab Emirates",108
+"DNK","Denmark",106
+"MYS","Malaysia",104
+"SGP","Singapore",94
+"CHL","Chile",92
+"HKG","Hong Kong SAR, China",91
+"EGY","Egypt, Arab Rep.",89
+"NGA","Nigeria",88
+"ISR","Israel",87
+"PHL","Philippines",86
+"GRC","Greece",83
+"FIN","Finland",82
+"PAK","Pakistan",77
+"PRT","Portugal",74
+"IRL","Ireland",73
+"IRQ","Iraq",72
+"DZA","Algeria",71
+"PER","Peru",70
+"KAZ","Kazakhstan",69
+"CZE","Czech Republic",55
+"ROM","Romania",54
+"UKR","Ukraine",48
+"QAT","Qatar",46
+"NZL","New Zealand",42
+"KWT","Kuwait",41
+"VNM","Vietnam",38
+"HUN","Hungary",27
+"BGD","Bangladesh",24
+"AGO","Angola",23
+"PRI","Puerto Rico",22
+"MAR","Morocco",189
+"SVK","Slovak Republic",187
+"ECU","Ecuador",180
+"SYR","Syrian Arab Republic",171
+"OMN","Oman",164
+"CUB","Cuba",162
+"AZE","Azerbaijan",161
+"BLR","Belarus",159
+"LKA","Sri Lanka",152
+"HRV","Croatia",151
+"DOM","Dominican Republic",150
+"SDN","Sudan",149
+"LUX","Luxembourg",148
+"UZB","Uzbekistan",145
+"BGR","Bulgaria",144
+"GTM","Guatemala",143
+"URY","Uruguay",137
+"TUN","Tunisia",131
+"SVN","Slovenia",130
+"CRI","Costa Rica",129
+"MAC","Macao SAR, China",128
+"LBN","Lebanon",127
+"LTU","Lithuania",126
+"ETH","Ethiopia",125
+"GHA","Ghana",124
+"KEN","Kenya",123
+"SRB","Serbia",114
+"PAN","Panama",111
+"YEM","Yemen, Rep.",110
+"TKM","Turkmenistan",109
+"JOR","Jordan",105
+"BHR","Bahrain",97
+"LVA","Latvia",96
+"TZA","Tanzania",95
+"BOL","Bolivia",93
+"PRY","Paraguay",85
+"CMR","Cameroon",84
+"CIV","Côte d'Ivoire",81
+"SLV","El Salvador",80
+"TTO","Trinidad and Tobago",79
+"CYP","Cyprus",76
+"EST","Estonia",75
+"ZMB","Zambia",68
+"AFG","Afghanistan",67
+"UGA","Uganda",53
+"NPL","Nepal",51
+"HND","Honduras",50
+"GAB","Gabon",49
+"GNQ","Equatorial Guinea",45
+"BIH","Bosnia and Herzegovina",44
+"ZAR","Congo, Dem. Rep.",43
+"BRN","Brunei Darussalam",40
+"GEO","Georgia",37
+"PNG","Papua New Guinea",36
+"JAM","Jamaica",35
+"BWA","Botswana",34
+"MOZ","Mozambique",33
+"SEN","Senegal",32
+"KHM","Cambodia",31
+"COG","Congo, Rep.",30
+"ISL","Iceland",29
+"NAM","Namibia",28
+"TCD","Chad",26
+"ALB","Albania",25
+"NIC","Nicaragua",21
+"MUS","Mauritius",20
+"BFA","Burkina Faso",19
+"MLI","Mali",18
+"MNG","Mongolia",17
+"SSD","South Sudan",16
+"MDG","Madagascar",186
+"ARM","Armenia",185
+"ZWE","Zimbabwe",184
+"MKD","Macedonia, FYR",183
+"LAO","Lao PDR",182
+"MLT","Malta",178
+"BHS","Bahamas, The",176
+"HTI","Haiti",168
+"BEN","Benin",167
+"MDA","Moldova",166
+"RWA","Rwanda",165
+"TJK","Tajikistan",158
+"NER","Niger",157
+"KGZ","Kyrgyz Republic",156
+"KSV","Kosovo",155
+"MCO","Monaco",154
+"GIN","Guinea",141
+"BMU","Bermuda",140
+"SUR","Suriname",139
+"MNE","Montenegro",121
+"MWI","Malawi",120
+"BRB","Barbados",119
+"MRT","Mauritania",118
+"FJI","Fiji",103
+"TGO","Togo",102
+"SLE","Sierra Leone",101
+"SWZ","Swaziland",100
+"ERI","Eritrea",98
+"GUY","Guyana",66
+"ABW","Aruba",64
+"BDI","Burundi",63
+"LSO","Lesotho",61
+"MDV","Maldives",59
+"CAF","Central African Republic",58
+"CPV","Cape Verde",14
+"BTN","Bhutan",12
+"LBR","Liberia",11
+"BLZ","Belize",9
+"TMP","Timor-Leste",7
+"LCA","St. Lucia",6
+"ATG","Antigua and Barbuda",4
+"SYC","Seychelles",2
+"SLB","Solomon Islands",1
+"GMB","Gambia, The",188
+"GNB","Guinea-Bissau",179
+"VUT","Vanuatu",174
+"GRD","Grenada",172
+"KNA","St. Kitts and Nevis",172
+"VCT","St. Vincent and the Grenadines",170
+"WSM","Samoa",163
+"COM","Comoros",153
+"DMA","Dominica",134
+"TON","Tonga",132
+"FSM","Micronesia, Fed. Sts.",107
+"STP","São Tomé and Principe",90
+"PLW","Palau",78
+"MHL","Marshall Islands",52
+"KIR","Kiribati",47
+"TUV","Tuvalu",122
