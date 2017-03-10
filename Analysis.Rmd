@@ -1,17 +1,12 @@
 ---
 title: "Educational data vs Gross Domestic Product"
-output: 
+output:
   html_document:
     keep_md: true
 ---
 ```{r}
 # install.packages('knitr', repos = c('http://rforge.net', 'http://cran.rstudio.org'), type = 'source')
-if (.Platform$OS.type == 'unix') {
-  data_path = 'data/'
-} else {
-  data_path = 'data\\'
-}
-Data = read.table(paste(data_path, "merged_data.csv", sep = ''), header = TRUE, encoding='UTF-8')
+Data = read.table(file.path("data", "merged_data.csv"), header = TRUE, encoding='UTF-8')
 ```
 
 #Introduction
@@ -65,4 +60,4 @@ top38 <- tail(Data, n = 38)
 print(NROW(top38[top38$Income.Group == 'Lower middle income', ]))
 ```
 
-COnclusion
+Conclusion
