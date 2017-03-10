@@ -23,7 +23,7 @@ git commit -m "description of changes"
 git push
 ```
 
-### Todo list: (write your name on the task before you start it)
+### Todo list: ( push as soon as you make a change )
 - [ ] Coment the code base
 - [ ] Add text to the R Markdown files
 - [ ] Make the output of the R Markdown files pretty
