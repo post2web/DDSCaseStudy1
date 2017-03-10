@@ -12,8 +12,13 @@ df <- df[c('V1', 'V4', 'V5')]
 # rename columns
 names(df) <- c('CountryCode', 'CountryName', 'GDP')
 
+# install stringi in case its not
+if("stringi" %in% rownames(installed.packages()) == FALSE){
+  install.packages("stringi", repos = structure(c(CRAN = "http://cran.r-project.org")))
+}
+# load stringi if not loaded
+require(stringi)
 # fix the encoding of the country names. Some have encoding problems
-library(stringi)
 df$CountryName <- stri_encode(df$CountryName, "", "UTF-8")
 df$CountryName <- stri_trans_general(df$CountryName, "Latin-ASCII")
 

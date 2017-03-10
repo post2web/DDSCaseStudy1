@@ -1,6 +1,10 @@
 # R code to download csv files for the project
 
-install.packages("downloader", repos = structure(c(CRAN="http://cran.r-project.org"))) 
+# attempt to install downloader only in case not installed
+if("downloader" %in% rownames(installed.packages()) == FALSE){
+  install.packages("downloader", repos = structure(c(CRAN="http://cran.r-project.org")))
+}
+# load package downloader
 require(downloader)
 
 #Download EDS Country data

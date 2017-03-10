@@ -5,7 +5,6 @@ output:
     keep_md: true
 ---
 ```{r}
-# install.packages('knitr', repos = c('http://rforge.net', 'http://cran.rstudio.org'), type = 'source')
 Data = read.table(file.path("data", "merged_data.csv"), header = TRUE, encoding='UTF-8')
 ```
 
@@ -42,7 +41,12 @@ print(mean(nonOECD_rankings))
 
 COmments
 ```{r kable}
-library(ggplot2)
+# install ggplot2 in case its not
+if("ggplot2" %in% rownames(installed.packages()) == FALSE){
+  install.packages("ggplot2", repos = structure(c(CRAN = "http://cran.r-project.org")))
+}
+# load the package
+require(ggplot2)
 qplot(Data$GDP, Data$GDP.rankings, color = Data$Income.Group)
 ```
 ###5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group.
@@ -50,7 +54,14 @@ qplot(Data$GDP, Data$GDP.rankings, color = Data$Income.Group)
 
 COmments
 ```{r}
+# install dplyr in case its not
+if("dplyr" %in% rownames(installed.packages()) == FALSE){
+  install.packages("dplyr", repos = structure(c(CRAN = "http://cran.r-project.org")))
+}
+# load dplyr
 library(dplyr)
+# ntile is a function from dplyr
+# ntile will split the rankings to 5 quantile groups
 Data$QuantGroup <- ntile(Data$GDP.rankings, 5)
 # I dont know what this means: Make a table versus Income.Group
 #     is this is?
