@@ -3,9 +3,8 @@ title: "Makefile"
 output: 
   html_document:
     keep_md: true
-
-Set dirs
 ---
+Setup
 ```{r setup}
 SEP = .Platform$file.sep
 root_dir = getwd()
@@ -27,7 +26,9 @@ source("merge_data.R")
 
 
 Merge data
-```{r merge_data}
-rmarkdown::render(paste(root_dir, SEP, "Analysis.Rmd", sep = ''))
+```{r render}
+knitr::opts_knit$set(root.dir = root_dir)
+setwd(root_dir)
+rmarkdown::render("Analysis.Rmd")
 ```
 
