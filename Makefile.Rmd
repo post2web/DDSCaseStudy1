@@ -28,6 +28,6 @@ source("merge_data.R")
 
 Merge data
 ```{r merge_data}
-rmarkdown::render(paste(root_dir, SEP, "EducationvsGDP.Rmd", sep = ''))
+rmarkdown::render(paste(root_dir, SEP, "Analysis.Rmd", sep = ''))
 ```
 
