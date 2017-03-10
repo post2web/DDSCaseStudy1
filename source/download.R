@@ -1,4 +1,5 @@
 # R code to download csv files for the project
+# to run this file you need to be in the root of the project
 
 # attempt to install downloader only in case not installed
 if("downloader" %in% rownames(installed.packages()) == FALSE){
@@ -7,12 +8,12 @@ if("downloader" %in% rownames(installed.packages()) == FALSE){
 # load package downloader
 require(downloader)
 
-#Download EDS Country data
-download.file(url = 'https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv',
-              destfile = file.path("..", "data", "EDSTATS_Country.csv"))
+#Download GDP data
+url = 'https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv'
+download.file(url = url, destfile = file.path("data", "gdp.csv"))
 cat("EDS Country Data downloaded")
 
-#Download GDP data
-download.file(url = "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv", 
-							destfile = file.path("..", "data", "GDP.csv"))
+#Download Country grups data
+url = "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv"
+download.file(url = url,destfile = file.path("data", "income_groups.csv"))
 cat("GDP Data downloaded\n")

@@ -4,30 +4,24 @@ output:
   html_document:
     keep_md: true
 ---
-Setup
-```{r setup}
-root_dir = getwd()
-knitr::opts_knit$set(root.dir = 'source')
-```
+
 download data files
 ```{r download}
-source("download.R")
+source(file.path("source", "download.R"))
 ```
 Tidy data
 ```{r clean_data}
-source("clean_country_data.R")
-source("clean_income_groups_data.R")
+source(file.path("source", "clean_gdp.R"))
+source(file.path("source", "clean_income_groups.R"))
 ```
 Merge data
 ```{r merge_data}
-source("merge_data.R")
+source(file.path("source", "merge.R"))
 ```
 
 
 Render the Analysis
 ```{r render}
-knitr::opts_knit$set(root.dir = root_dir)
-setwd(root_dir)
 rmarkdown::render("Analysis.Rmd")
 ```
 

@@ -1,8 +1,7 @@
-# platform independent path for the data dir
-data_dir = paste('..', .Platform$file.sep, 'data', sep = '')
-
+# this file is used to clean gdp.csv -> gdp_tidy.csv
+# to run this file you need to be in the root of the project
 #Read EDS Country file
-file_obj = file(file.path(data_dir, "EDSTATS_Country.csv"))
+file_obj = file(file.path('data', "gdp.csv"))
 df <- read.csv(file_obj, header = FALSE, sep = ',', skip = 5, nrows = 190)
 
 # get a subset of rows with needed information
@@ -34,6 +33,6 @@ df$GDP <- as.numeric(df$GDP)
 df <- df[is.finite(df$GDP), ]
 
 # write the resulting tidy data
-write.table(df, file.path(data_dir, "countries.csv"), row.names = FALSE)
+write.table(df, file.path('data', "gdp_tidy.csv"), row.names = FALSE)
 
 cat("Country data was cleaned\n")
