@@ -1,12 +1,8 @@
-# this ensures paths will work on windows
-if (.Platform$OS.type == 'unix') {
-  data_path = '../data/'
-} else {
-  data_path = '..\\data\\'
-}
+# platform independent path for the data dir
+data_dir = paste('..', .Platform$file.sep, 'data', sep = '')
 
 #Read EDS Country file
-file_obj = file(paste(data_path, "EDSTATS_Country.csv", sep = ''))
+file_obj = file(file.path(data_dir, "EDSTATS_Country.csv"))
 df <- read.csv(file_obj, header = FALSE, sep = ',', skip = 5, nrows = 190)
 
 # get a subset of rows with needed information
@@ -16,7 +12,7 @@ df <- df[c('V1', 'V4', 'V5')]
 # rename columns
 names(df) <- c('CountryCode', 'CountryName', 'GDP')
 
-# fix in encoding
+# fix the encoding of the country names. Some have encoding problems
 library(stringi)
 df$CountryName <- stri_encode(df$CountryName, "", "UTF-8")
 df$CountryName <- stri_trans_general(df$CountryName, "Latin-ASCII")
@@ -33,6 +29,6 @@ df$GDP <- as.numeric(df$GDP)
 df <- df[is.finite(df$GDP), ]
 
 # write the resulting tidy data
-write.table(df, paste(data_path, "countries.csv", sep = ''), row.names = FALSE)
+write.table(df, file.path(data_dir, "countries.csv"), row.names = FALSE)
 
 cat("Country data was cleaned\n")

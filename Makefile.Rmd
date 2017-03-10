@@ -6,7 +6,6 @@ output:
 ---
 Setup
 ```{r setup}
-SEP = .Platform$file.sep
 root_dir = getwd()
 knitr::opts_knit$set(root.dir = 'source')
 ```
@@ -25,7 +24,7 @@ source("merge_data.R")
 ```
 
 
-Merge data
+Render the Analysis
 ```{r render}
 knitr::opts_knit$set(root.dir = root_dir)
 setwd(root_dir)

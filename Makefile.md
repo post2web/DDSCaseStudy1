@@ -2,7 +2,6 @@
 Setup
 
 ```r
-SEP = .Platform$file.sep
 root_dir = getwd()
 knitr::opts_knit$set(root.dir = 'source')
 ```
@@ -15,7 +14,7 @@ source("download.R")
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/df/2w6dv0r11pb69jhk8lzjjb_m0000gn/T//RtmpPMHG8Y/downloaded_packages
+## 	/var/folders/df/2w6dv0r11pb69jhk8lzjjb_m0000gn/T//RtmpHSiYoD/downloaded_packages
 ```
 
 ```
@@ -53,7 +52,7 @@ source("merge_data.R")
 ```
 
 
-Merge data
+Render the Analysis
 
 ```r
 knitr::opts_knit$set(root.dir = root_dir)
@@ -138,7 +137,7 @@ rmarkdown::render("Analysis.Rmd")
 ```
 
 ```
-## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS Analysis.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output Analysis.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /var/folders/df/2w6dv0r11pb69jhk8lzjjb_m0000gn/T//RtmpPMHG8Y/rmarkdown-str3f65353006a2.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS Analysis.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output Analysis.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /var/folders/df/2w6dv0r11pb69jhk8lzjjb_m0000gn/T//RtmpHSiYoD/rmarkdown-str40286d052508.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
 ```
 
 ```

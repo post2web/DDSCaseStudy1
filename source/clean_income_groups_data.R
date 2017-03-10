@@ -1,12 +1,8 @@
-# this ensures paths will work on windows
-if (.Platform$OS.type == 'unix') {
-  data_path = '../data/'
-} else {
-  data_path = '..\\data\\'
-}
+# platform independent path for the data dir
+data_dir = paste('..', .Platform$file.sep, 'data', sep = '')
 
 #Read the GDP csv file
-df <- read.csv(paste(data_path, "GDP.csv", sep = ''), header = TRUE, encoding='UTF-8')
+df <- read.csv(file.path(data_dir, "GDP.csv"), header = TRUE, encoding='UTF-8')
 
 # To answer all the questions we need:
 # CountryCode - to merge
@@ -17,7 +13,7 @@ df <- df[, c('CountryCode', 'Income.Group')]
 df <- data.frame(lapply(df, trimws))
 
 # write the resulting tidy data
-write.table(df, paste(data_path, "income_groups.csv", sep = ''), row.names = FALSE)
+write.table(df, file.path(data_dir, "income_groups.csv"), row.names = FALSE)
 
 cat("Income grpus data was cleaned\n")
 

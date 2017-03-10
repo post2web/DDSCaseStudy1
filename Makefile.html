@@ -121,14 +121,13 @@ $(document).ready(function () {
 
 
 <p>Setup</p>
-<pre class="r"><code>SEP = .Platform$file.sep
-root_dir = getwd()
+<pre class="r"><code>root_dir = getwd()
 knitr::opts_knit$set(root.dir = 'source')</code></pre>
 <p>download data files</p>
 <pre class="r"><code>source(&quot;download.R&quot;)</code></pre>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/df/2w6dv0r11pb69jhk8lzjjb_m0000gn/T//RtmpPMHG8Y/downloaded_packages</code></pre>
+##  /var/folders/df/2w6dv0r11pb69jhk8lzjjb_m0000gn/T//RtmpHSiYoD/downloaded_packages</code></pre>
 <pre><code>## Loading required package: downloader</code></pre>
 <pre><code>## EDS Country Data downloadedGDP Data downloaded</code></pre>
 <p>Tidy data</p>
@@ -139,7 +138,7 @@ knitr::opts_knit$set(root.dir = 'source')</code></pre>
 <p>Merge data</p>
 <pre class="r"><code>source(&quot;merge_data.R&quot;)</code></pre>
 <pre><code>## Data was merged</code></pre>
-<p>Merge data</p>
+<p>Render the Analysis</p>
 <pre class="r"><code>knitr::opts_knit$set(root.dir = root_dir)
 setwd(root_dir)
 rmarkdown::render(&quot;Analysis.Rmd&quot;)</code></pre>
@@ -207,7 +206,7 @@ rmarkdown::render(&quot;Analysis.Rmd&quot;)</code></pre>
   |.................................................................| 100%
 ##   ordinary text without R code</code></pre>
 <pre><code>## output file: Analysis.knit.md</code></pre>
-<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS Analysis.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output Analysis.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /var/folders/df/2w6dv0r11pb69jhk8lzjjb_m0000gn/T//RtmpPMHG8Y/rmarkdown-str3f65353006a2.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'</code></pre>
+<pre><code>## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS Analysis.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output Analysis.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /var/folders/df/2w6dv0r11pb69jhk8lzjjb_m0000gn/T//RtmpHSiYoD/rmarkdown-str40286d052508.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'</code></pre>
 <pre><code>## 
 ## Output created: Analysis.html</code></pre>
 
