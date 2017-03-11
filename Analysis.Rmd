@@ -1,35 +1,43 @@
 ---
 title: "Educational data vs Gross Domestic Product"
+date: 10-03-2017
+authors: Ivelin Angelov, Laura Bishop, Ethan Graham, Scott Gozdzialski
 output:
   html_document:
     keep_md: true
 ---
-```{r echo=FALSE}
-Data = read.table(file.path("data", "merged_data.csv"), header = TRUE, encoding='UTF-8')
-```
 
 #Introduction
 With the global market in flux the last few years and the rising cost of higher education, people are wondering if investment in higher education is worth the cost. Governments are also starting to wonder if the investment into higher education is justified when budget dollars could be spent on other needed projects. The DDS task force was created to provide guidance to governments and prospective students about the relationship between education and gross domestic product. The following analysis is performed based on Worldbank data on education and gross domestic product from 190 countries.
 
-###1. With the merged data frame how many IDs matched?
-
-When we merged the Educational data with the GDP data we were bound to have some that did not match.
-The number that we ended up mathing together is listed below.
 ```{r}
+# Grab our merged_data file and import it into the current R session for use later.
+Data = read.table(file.path("data", "merged_data.csv"), header = TRUE, encoding='UTF-8')
+```
+
+###1. With the merged data frame how many IDs matched?
+Comparing the merged the Educational data with the GDP data shows 189 observations.
+```{r}
+# Count the number of rows from our merged data.
 nrow(Data)
 ```
 ###2. With the the data frame in decending order by GDP(United States last) what is the 13th value?
-
+Looking into the data, the 13th value, baseed on descending GDP, the value found is,<br/>
+<b>93         KNA St. Kitts and Nevis 767 Upper middle income</b>
 ```{r}
-# reorder by GDP
+# Sort data in descending order based on GDP.
 Data = Data[order(Data$GDP),]
-# print 13-th
+# Print 13-th data frame.
 print(Data[c(13), ])
 ```
 
-###3. What arethe average GDP rankings for the "High income: OECD" and "High Income:nonOECD" groups?
+###3. What are the average GDP rankings for the "High income: OECD" and "High Income:nonOECD" groups?
+These data show the average rankings
 
-Comments
+| High income: OECD | High income: nonOECD |
+| --- | --- |
+| 157.0333 | 98.34783 |
+
 ```{r}
 Data$GDP.rankings = rank(Data$GDP)
 OECD_rankings = Data$GDP.rankings[Data$Income.Group == "High income: OECD"]
@@ -37,9 +45,9 @@ print(mean(OECD_rankings))
 nonOECD_rankings = Data$GDP.rankings[Data$Income.Group == "High income: nonOECD"]
 print(mean(nonOECD_rankings))
 ```
-###4. 1	Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.
 
-COmments
+###4. 1	Plot the GDP for all of the countries.
+The following is a plot of th GDP for all countries.
 ```{r kable}
 # install ggplot2 in case its not
 if("ggplot2" %in% rownames(installed.packages()) == FALSE){
@@ -47,12 +55,13 @@ if("ggplot2" %in% rownames(installed.packages()) == FALSE){
 }
 # load the package
 require(ggplot2)
+# Use ggplot2 to color the plot by Income Group.
 qplot(Data$GDP, Data$GDP.rankings, color = Data$Income.Group)
 ```
-###5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group.
-###   How many countries are "lower middle income" but within the 38 nations with the highest GDP?
 
-COmments
+### 5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group.
+### How many countries are "lower middle income" but within the 38 nations with the highest GDP?
+
 ```{r}
 # install dplyr in case its not
 if("dplyr" %in% rownames(installed.packages()) == FALSE){
