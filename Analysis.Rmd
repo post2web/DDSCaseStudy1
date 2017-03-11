@@ -9,7 +9,15 @@ Data = read.table(file.path("data", "merged_data.csv"), header = TRUE, encoding=
 ```
 
 #Introduction
-With the global market in flux the last few years and the rising cost of higher education, people are wondering if investment in higher education is worth the cost. Governments are also starting to wonder if the investment into higher education is justified when budget dollars could be spent on other needed projects. The DDS task force was created to provide guidance to governments and prospective students about the relationship between education and gross domestic product. The following analysis is performed based on Worldbank data on education and gross domestic product from 190 countries.
+The world economy is accelerating at a rapid pace. Influencing factors looked at by the World Bank, the world's largest development institution, are climate change, conflict, food security, education, agriculture, finance, and trade.  Questions are being asked about the investment and result of education as indicators of a country's Gross Domestic Product (GDP).
+
+The data source for this analysis is from the World Bank's Education Statistics (http://datatopics.worldbank.org/education/) web site.  While the World Bank looks at many indicators across all levels of education, this analysis will focus on the aggregate of all education levels with no specific break out for attributes of the student (gender, age, etc).  
+
+It is important to note that the World Bank's Education Statistics (EDSstat) does differentiate between countries that participate in the Organization of Economic Cooperation and Development (OECD). The OECD was founded in 1960 and contains 35 member countries today, including the United States, United Kingdom, and Germany.  The goal of this organization is to help developing countries create and sustain economic prosperity.  In this analysis, the  "Income Group" used in the ranking of GDP for a country does contain an indicator of whether the country is part of the OECD. 
+
+This analysis takes a closer look at the relationship between GDP and overall education across OECD and non OECD countries.
+
+
 
 ###1. With the merged data frame how many IDs matched?
 
@@ -27,7 +35,7 @@ Data = Data[order(Data$GDP),]
 print(Data[c(13), ])
 ```
 
-###3. What arethe average GDP rankings for the "High income: OECD" and "High Income:nonOECD" groups?
+###3. What are the average GDP rankings for the "High income: OECD" and "High Income:nonOECD" groups?
 
 Comments
 ```{r}
@@ -52,7 +60,7 @@ qplot(Data$GDP, Data$GDP.rankings, color = Data$Income.Group)
 ###5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group.
 ###   How many countries are "lower middle income" but within the 38 nations with the highest GDP?
 
-COmments
+Comments
 ```{r}
 # install dplyr in case its not
 if("dplyr" %in% rownames(installed.packages()) == FALSE){
