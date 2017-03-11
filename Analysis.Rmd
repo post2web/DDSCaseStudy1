@@ -4,12 +4,12 @@ output:
   html_document:
     keep_md: true
 ---
-```{r}
+```{r echo=FALSE}
 Data = read.table(file.path("data", "merged_data.csv"), header = TRUE, encoding='UTF-8')
 ```
 
 #Introduction
-With the global market in flux of the last few years and the rising cost of higher education people are wondering if the investment is worth the cost.  At the same time governments are starting to wonder if the cost of investment into higher education is worth it when the limited budget dollars could be spent on other needed projects.  With this in mind we were asked to look into this problem and compare Education levels with Gross Domsetic Products to see if there was any relationship.  In particular we were asked the following questions.  To merge the data based on the country shortcode and How many IDs matched?  Sort the data frame in ascending order by GDP and what is the thirteenth country in the resulting dataframe?  What are the average GDP rankings for the "High income:OECD" and "High income: nonOECD" groups? To plot the GDP for all of the countries, and use ggplot2 to color you plots by income group. Finally to cut the GDP ranking into 5 seperate quantile groups, making a table versus income group. How many countries are lower middle income but are among the 38 nations with the highest GDP?
+With the global market in flux the last few years and the rising cost of higher education, people are wondering if investment in higher education is worth the cost. Governments are also starting to wonder if the investment into higher education is justified when budget dollars could be spent on other needed projects. The DDS task force was created to provide guidance to governments and prospective students about the relationship between education and gross domestic product. The following analysis is performed based on Worldbank data on education and gross domestic product from 190 countries.
 
 ###1. With the merged data frame how many IDs matched?
 
