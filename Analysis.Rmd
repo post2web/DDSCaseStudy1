@@ -1,5 +1,5 @@
 ---
-title: "Educational data vs Gross Domestic Product"
+title: "Educational Data vs Gross Domestic Product Analysis"
 output:
   html_document:
     keep_md: true
@@ -47,16 +47,30 @@ print(mean(nonOECD_rankings))
 ```
 ###4. 1	Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.
 
-COmments
+Comments
 ```{r kable}
-# install ggplot2 in case its not
+# install ggplot2 and scales in case its not
 if("ggplot2" %in% rownames(installed.packages()) == FALSE){
   install.packages("ggplot2", repos = structure(c(CRAN = "http://cran.r-project.org")))
 }
-# load the package
+if("scales" %in% rownames(installed.packages()) == FALSE){
+  install.packages("scales", repos = structure(c(CRAN = "http://cran.r-project.org")))
+}
+# load the packages
 require(ggplot2)
-qplot(Data$GDP, Data$GDP.rankings, color = Data$Income.Group)
-```
+require(scales)  # allows for setting up the ggplot
+
+options(scipen=10000)  # gets rid of the exponential numbers on the Y axis
+
+ggplot (Data, aes(x=Data$Income.Group, y=Data$GDP)) + # sets up GGPLOT2 scatter plot
+  scale_y_continuous(name="GDP -- In USD$ Millions", labels= scales::comma, expand = c(0,0), limits=c(0, 20000000), breaks=seq(0,18000000, 2000000))  + #sets up Y axis with labels
+  scale_x_discrete ("Income Group", labels = c("Low income" = "LI", "High income: nonOECD" = "nHI", "High income: OECD" = "oHI", "Lower middle income" = "LMI", "Upper middle income" = "UMI")) + # sets up x axis for abbreviates of categorical variable to prevent overlap and promote readability
+  theme (aspect.ratio = 2/1) + #sets up aspect ratio so consistent with each output
+  geom_point(aes(color = Data$Income.Group)) +  #sets up colored points
+  scale_color_discrete (name="Income Group") #changes legend title
+cat ("\n") # This pushes #5 below to the next line and allows the diagram to stand alone.
+```   
+
 ###5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group.
 ###   How many countries are "lower middle income" but within the 38 nations with the highest GDP?
 
