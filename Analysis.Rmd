@@ -9,13 +9,13 @@ Data = read.table(file.path("data", "merged_data.csv"), header = TRUE, encoding=
 ```
 
 #Introduction
-The world economy is accelerating at a rapid pace. Influencing factors looked at by the World Bank, the world's largest development institution, are climate change, conflict, food security, education, agriculture, finance, and trade.  Questions are being asked about the investment and result of education as indicators of a country's Gross Domestic Product (GDP).
+The global economy is accelerating at a rapid pace.  The World Bank, which is the world's largest development institution, looks at influencing factors like climate change, conflict, food security, education, agriculture, finance, and trade.  Questions are being asked about Gross Domestic Product (GDP) and Income categories for 190 countries in which there is sufficient data to analyze. 
 
-The data source for this analysis is from the World Bank's Education Statistics (http://datatopics.worldbank.org/education/) web site.  While the World Bank looks at many indicators across all levels of education, this analysis will focus on the aggregate of all education levels with no specific break out for attributes of the student (gender, age, etc).  
+The data source for this analysis is from the World Bank's Education Statistics (http://datatopics.worldbank.org/education/) web site for basic information on a country, including income grouping, date of last census data, systems of trade, government accounting approach, and many others basic data points except GDP. The GDP information, also from the World Bank, is not a part of the Education Statistics information collection and dissemination. 
 
-It is important to note that the World Bank's Education Statistics (EDSstat) does differentiate between countries that participate in the Organization of Economic Cooperation and Development (OECD). The OECD was founded in 1960 and contains 35 member countries today, including the United States, United Kingdom, and Germany.  The goal of this organization is to help developing countries create and sustain economic prosperity.  In this analysis, the  "Income Group" used in the ranking of GDP for a country does contain an indicator of whether the country is part of the OECD. 
+It is important to note that the World Bank's Education Statistics (EDSstat) does differentiate between countries that participate in the Organization of Economic Cooperation and Development (OECD). The OECD was founded in 1960 and contains 35 member countries today, including the United States, United Kingdom, and Germany.  The goal of this organization is to help developing countries create and sustain economic prosperity.  In this analysis, the  "Income Group" used in the ranking of GDP for a country does contain an indicator of whether a high income country is part of the OECD. 
 
-This analysis takes a closer look at the relationship between GDP and overall education across OECD and non OECD countries.
+This analysis takes a closer look at the relationship between GDP and Income Groups.
 
 
 
