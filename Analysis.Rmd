@@ -1,5 +1,5 @@
 ---
-title: "Educational Data vs Gross Domestic Product Analysis"
+title: "Gross Domestic Product Analysis"
 output:
   html_document:
     keep_md: true
@@ -35,7 +35,7 @@ Data = Data[order(Data$GDP),]
 print(Data[c(13), ])
 ```
 
-###3. What are the average GDP rankings for the "High income: OECD" and "High Income:nonOECD" groups?
+###3. What are the average GDP rankings for the "High Income: OECD" and "High Income:nonOECD" groups?
 
 Comments
 ```{r}
@@ -43,7 +43,7 @@ Data$GDP.rankings = rank(Data$GDP)
 OECD_rankings = Data$GDP.rankings[Data$Income.Group == "High income: OECD"]
 print(mean(OECD_rankings))
 nonOECD_rankings = Data$GDP.rankings[Data$Income.Group == "High income: nonOECD"]
-print(mean(nonOECD_rankings))
+print(mean(nonOECD_rankings)) 
 ```
 ###4. 1	Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.
 
@@ -63,7 +63,7 @@ require(scales)  # allows for setting up the ggplot
 options(scipen=10000)  # gets rid of the exponential numbers on the Y axis
 
 ggplot (Data, aes(x=Data$Income.Group, y=Data$GDP)) + # sets up GGPLOT2 scatter plot
-  scale_y_continuous(name="GDP -- In USD$ Millions", labels= scales::comma, expand = c(0,0), limits=c(0, 20000000), breaks=seq(0,18000000, 2000000))  + #sets up Y axis with labels
+  scale_y_continuous(name="GDP -- In USD$ Millions", labels= scales::comma, expand = c(0,0), limits=c(0, 20000000), breaks=seq(0,18000000, 2000000))  + #sets up Y axis with labels and range
   scale_x_discrete ("Income Group", labels = c("Low income" = "LI", "High income: nonOECD" = "nHI", "High income: OECD" = "oHI", "Lower middle income" = "LMI", "Upper middle income" = "UMI")) + # sets up x axis for abbreviates of categorical variable to prevent overlap and promote readability
   theme (aspect.ratio = 2/1) + #sets up aspect ratio so consistent with each output
   geom_point(aes(color = Data$Income.Group)) +  #sets up colored points
@@ -76,21 +76,15 @@ cat ("\n") # This pushes #5 below to the next line and allows the diagram to sta
 
 Comments
 ```{r}
-# install dplyr in case its not
-if("dplyr" %in% rownames(installed.packages()) == FALSE){
-  install.packages("dplyr", repos = structure(c(CRAN = "http://cran.r-project.org")))
-}
-# load dplyr
-library(dplyr)
-# ntile is a function from dplyr
-# ntile will split the rankings to 5 quantile groups
-Data$QuantGroup <- ntile(Data$GDP.rankings, 5)
-# I dont know what this means: Make a table versus Income.Group
-#     is this is?
-knitr::kable(Data[c('QuantGroup', 'Income.Group')])
+# Split the rankings to 5 quantile groups
+OrderData <- Data[order(Data$GDP.rankings), c(1:4)]
+colNames <- c("Country Name", "Country Code", "GDP in USD$", "Income Group")
+knitr::kable (OrderData[c('CountryName', 'CountryCode', 'GDP', 'Income.Group')], col.names = colNames, align = 'c', caption = "Ranking in Income Group")
+
 top38 <- tail(Data, n = 38)
 # this answer: How many countries are "lower middle income" but within the 38 nations with the highest GDP
 print(NROW(top38[top38$Income.Group == 'Lower middle income', ]))
+
 ```
 
 Conclusion
