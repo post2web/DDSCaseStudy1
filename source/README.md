@@ -1,7 +1,4 @@
-*
-# Data
-
-This folder holds all the source files for the project.<br/>
+# This folder holds all the source files for the project.<br/>
 
 ## Description of files:
 * donload.R - a script used for donloading the csv data files
