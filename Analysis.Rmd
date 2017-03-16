@@ -9,7 +9,7 @@ Data = read.table(file.path("data", "merged_data.csv"), header = TRUE, encoding=
 ```
 
 #Introduction
-The global economy is accelerating at a rapid pace.  The World Bank, which is the world's largest development institution, looks at influencing factors like climate change, conflict, food security, education, agriculture, finance, and trade.  Questions are being asked about Gross Domestic Product (GDP) and Income categories for 190 countries in which there is sufficient data to analyze. 
+The global economy is accelerating at a rapid pace.  The World Bank, which is the world's largest development institution, looks at influencing factors like climate change, conflict, food security, education, agriculture, finance, and trade.  Questions are being asked about Gross Domestic Product (GDP) and Income categories for 189 countries in which there is sufficient data to analyze. 
 
 The data source for this analysis is from the World Bank's Education Statistics (http://datatopics.worldbank.org/education/) web site for basic information on a country, including income grouping, date of last census data, systems of trade, government accounting approach, and many others basic data points except GDP. The GDP information, also from the World Bank, is not a part of the Education Statistics information collection and dissemination. 
 
@@ -56,9 +56,18 @@ if("ggplot2" %in% rownames(installed.packages()) == FALSE){
 if("scales" %in% rownames(installed.packages()) == FALSE){
   install.packages("scales", repos = structure(c(CRAN = "http://cran.r-project.org")))
 }
+if("Hmisc" %in% rownames(installed.packages()) == FALSE){
+  install.packages("Hmisc", repos = structure(c(CRAN = "http://cran.r-project.org")))
+}
+if("lattice" %in% rownames(installed.packages()) == FALSE){
+  install.packages("lattice", repos =structure(c(CRAN = "http://cran.r-project.org")))
+}  
+  
 # load the packages
 require(ggplot2)
 require(scales)  # allows for setting up the ggplot
+require (Hmisc) # for conclusion
+require (lattice) # for histograms in conclusion
 
 options(scipen=10000)  # gets rid of the exponential numbers on the Y axis
 
@@ -68,17 +77,17 @@ ggplot (Data, aes(x=Data$Income.Group, y=Data$GDP)) + # sets up GGPLOT2 scatter 
   theme (aspect.ratio = 2/1) + #sets up aspect ratio so consistent with each output
   geom_point(aes(color = Data$Income.Group)) +  #sets up colored points
   scale_color_discrete (name="Income Group") #changes legend title
-cat ("\n") # This pushes #5 below to the next line and allows the diagram to stand alone.
+
 ```   
 
 ###5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group.
-###   How many countries are "lower middle income" but within the 38 nations with the highest GDP?
+##   How many countries are "lower middle income" but within the 38 nations with the highest GDP?
 
 Comments
 ```{r}
 # Split the rankings to 5 quantile groups
 OrderData <- Data[order(Data$GDP.rankings), c(1:4)]
-colNames <- c("Country Name", "Country Code", "GDP in USD$", "Income Group")
+colNames <- c("Country Name", "Country Code", "GDP in Millions USD$", "Income Group")
 knitr::kable (OrderData[c('CountryName', 'CountryCode', 'GDP', 'Income.Group')], col.names = colNames, align = 'c', caption = "Ranking in Income Group")
 
 top38 <- tail(Data, n = 38)
@@ -87,4 +96,50 @@ print(NROW(top38[top38$Income.Group == 'Lower middle income', ]))
 
 ```
 
-Conclusion
+###Conclusion
+
+There are many factors that influence a country's GDP and overall prosperity.  This data analysis effort looks at GDP and the categories of Income Group as provided by the World Bank data.  The Income Group is made up of High Income: non OECD; High Income: OECD, Upper Middle Income; Lower Middle Income; and Low Income. All conclusions were measured in millions of USD$.  
+
+Initial testing of this data includes a t-test, scatterplot and histogram of GDP.  For the mean GDP t-test, we reject the null hypothesis that GDP = 0 based on a 95% confidence level that the true GDP mean is between $170,839.4 Million and $588,353.7 Million (pvalue = 0.0004264).
+
+```{r}
+GDPmatrix <- matrix(Data$GDP)
+t.test(GDPmatrix)
+```
+  
+The histogram of GDP shows a severe right skew, indicating an asysmetrical distribution.  
+
+```{r}
+col1 <- c("Min", "1st Qu.", "Median", "Mean", "3rd Qu.", "Max.")
+summary(Data$GDP, "html", caption = "Summary Statistics of GDP", col.names=col1, align='c' )
+
+hist(Data$GDP, breaks=5, main= "Histogram of GDP Data\n In Millions USD$", xlab = "GDP", ylab="Millions USD$", col="blue")
+
+```
+  
+This is due to a few countries with large GDP, like the United States at $16,244,600 Million. The right skewedness also indicates the mean is greater than the median, making the median at $28,240 Million a better overall indicator of GDP across the data set.
+
+A smooth scatterplot of GDP does not visually confirm a linear relationship.  
+```{r}
+smoothScatter (Data$GDP, ylab="GDP in Millions USD$")
+``` 
+  
+A second look at the category breakdown shows unexpected assignment of countries to Income Group categories.  Below is a subset of the Income Group by countries with a GDP greater than $1,000,000 Million.
+```{r}
+cutoff <- Data[Data$GDP >= 1000000,]
+print (cutoff[,-5:-6])
+```
+We see India with a GDP of $1,841,710 Million and yet its Income Group is Lower Middle Income. Additionally, China is the second largest GDP in this list of 189 countries at $8,227,103 Million.  And yet, it is in the Lower Middle Income category as well. It is unknown what other attributes contribute to the assigning of countries to Income Group subcategories. As a warning, more information would be needed to explain the assignment to Income Group.
+
+The better approach to test the significance of the GDP related to Income Group is to use the Krusal-Wallis test, which tests for statistical difference across the Income Groups based on median.  The Krusal- Wallis test indicates that the median of the five Income Groups are not the same (p-value= 0.000000000003617, df=4, chi-squared = 59.544).
+```{r}
+kruskal.test(Data$GDP ~ Data$Income.Group, data = Data)
+```
+From this limited data, we can determine 
+
+###Holding area:  TEMP!!   
+How do i subset Data$Income.Group for only the 2 HIgh Income factors to run post hoc test against each other. I think there may be useful data in the increased GDP of OECD countries vs those that are not.
+
+GDPmatrix <- matrix(Data$GDP)
+rcorr (GDPmatrix, Data$Income.Group, type=c("pearson", "spearman"))
+chisq.test (GDPmatrix)
