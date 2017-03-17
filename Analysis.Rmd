@@ -67,7 +67,7 @@ You can see the OECD group has a higher average GDP.
 
 It is hard to visualize all the data of the countries we have in our data frame in our minds.
 To help with this we will plot that different groups in a chart below.
-```{r }
+```{r message=F}
 # Load needed packages
 require(ggplot2)
 # Allows for setting up the ggplot
@@ -173,7 +173,7 @@ smoothScatter (Data$GDP, ylab="GDP in Millions USD$")
   
 A second look at the category breakdown shows unexpected assignment of countries to Income Group categories.
 Below is a subset of the Income Group by countries with a GDP greater than $1,000,000 Million.
-```{r}
+```{r message=F}
 require('htmlTable')
 cutoff <- Data[Data$GDP >= 1000000,]
 htmlTable(
