@@ -67,7 +67,7 @@ You can see the OECD group has a higher average GDP.
 
 It is hard to visualize all the data of the countries we have in our data frame in our minds.
 To help with this we will plot that different groups in a chart below.
-```{r message=F}
+```{r }
 # Load needed packages
 require(ggplot2)
 # Allows for setting up the ggplot
@@ -87,7 +87,7 @@ ggplot (Data, aes(x=Data$Income.Group, y=Data$GDP)) + # sets up GGPLOT2 scatter 
   theme (aspect.ratio = 2/1) + #sets up aspect ratio so consistent with each output
   geom_point(aes(color = Data$Income.Group)) +  #sets up colored points
   scale_color_discrete (name="Income Group") #changes legend title
-```   
+```
 
 ##5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group.
 ##   How many countries are "lower middle income" but within the 38 nations with the highest GDP?

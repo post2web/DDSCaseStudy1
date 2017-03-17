@@ -84,10 +84,54 @@ To help with this we will plot that different groups in a chart below.
 ```r
 # Load needed packages
 require(ggplot2)
+```
+
+```
+## Loading required package: ggplot2
+```
+
+```r
 # Allows for setting up the ggplot
 require(scales) 
+```
+
+```
+## Loading required package: scales
+```
+
+```r
 # For conclusion
 require (Hmisc) 
+```
+
+```
+## Loading required package: Hmisc
+```
+
+```
+## Loading required package: lattice
+```
+
+```
+## Loading required package: survival
+```
+
+```
+## Loading required package: Formula
+```
+
+```
+## 
+## Attaching package: 'Hmisc'
+```
+
+```
+## The following objects are masked from 'package:base':
+## 
+##     format.pval, round.POSIXt, trunc.POSIXt, units
+```
+
+```r
 # For histograms in conclusion
 require (lattice) 
 

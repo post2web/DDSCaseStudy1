@@ -158,12 +158,23 @@ cat('The high income nonOECD group had an average GDP of', mean(nonOECD_rankings
 <h3>4. 1 Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.</h3>
 <p>It is hard to visualize all the data of the countries we have in our data frame in our minds. To help with this we will plot that different groups in a chart below.</p>
 <pre class="r"><code># Load needed packages
-require(ggplot2)
-# Allows for setting up the ggplot
-require(scales) 
-# For conclusion
-require (Hmisc) 
-# For histograms in conclusion
+require(ggplot2)</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre class="r"><code># Allows for setting up the ggplot
+require(scales) </code></pre>
+<pre><code>## Loading required package: scales</code></pre>
+<pre class="r"><code># For conclusion
+require (Hmisc) </code></pre>
+<pre><code>## Loading required package: Hmisc</code></pre>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## Loading required package: survival</code></pre>
+<pre><code>## Loading required package: Formula</code></pre>
+<pre><code>## 
+## Attaching package: 'Hmisc'</code></pre>
+<pre><code>## The following objects are masked from 'package:base':
+## 
+##     format.pval, round.POSIXt, trunc.POSIXt, units</code></pre>
+<pre class="r"><code># For histograms in conclusion
 require (lattice) 
 
 # Gets rid of the exponential numbers on the Y axis
