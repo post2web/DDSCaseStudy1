@@ -79,7 +79,7 @@ if("Hmisc" %in% rownames(installed.packages()) == FALSE){
   install.packages("Hmisc", repos = structure(c(CRAN = "http://cran.r-project.org")))
 }
 if("lattice" %in% rownames(installed.packages()) == FALSE){
-  install.packages("lattice", repos =structure(c(CRAN = "http://cran.r-project.org")))
+  install.packages("lattice", repos = structure(c(CRAN = "http://cran.r-project.org")))
 }  
   
 # load the packages
@@ -105,9 +105,9 @@ The selection into the igh income and member of the OECD, the high income and no
 With this knowledge we can see that some members of the lower income groups may have the higher GDP then members of the high income group.
 So, how many of the countries in the top 38 GDPs are actual in the lower middle income?  
 
-```{r}
+```{r }
 if("DT" %in% rownames(installed.packages()) == FALSE){
-  install.packages("DT", repos =structure(c(CRAN = "http://cran.r-project.org")))
+  install.packages("DT", repos = structure(c(CRAN = "http://cran.r-project.org")))
 }
 require('DT')
 # Split the rankings to 5 quantile groups
@@ -173,7 +173,12 @@ A second look at the category breakdown shows unexpected assignment of countries
 Below is a subset of the Income Group by countries with a GDP greater than $1,000,000 Million.
 ```{r}
 cutoff <- Data[Data$GDP >= 1000000,]
-print (cutoff[,-5:-6])
+datatable(
+  cutoff[,-5:-6],
+  options = list(pageLength = 15, searching = FALSE),
+  caption = "Ranking in Income Groups"
+)
+
 ```
 We see India with a GDP of $1,841,710 Million and yet its Income Group is Lower Middle Income.
 Additionally, China is the second largest GDP in this list of 189 countries at $8,227,103 Million.

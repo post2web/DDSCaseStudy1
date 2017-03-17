@@ -1,7 +1,7 @@
 # this file is used to clean income_groups.csv -> income_groups_tidy.csv
 # authors: Ivelin Angelov, Laura Bishop, Ethan Graham, Scott Gozdzialski
 
-#Read the GDP csv file
+# Read the GDP csv file
 df <- read.csv(file.path('data', "income_groups.csv"), header = TRUE, encoding='UTF-8')
 
 # To answer all the questions we need:
