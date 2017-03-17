@@ -1,83 +1,147 @@
 ---
-title: "Educational data vs Gross Domestic Product"
+title: "Gross Domestic Product Analysis"
 date: 10-03-2017
 authors: Ivelin Angelov, Laura Bishop, Ethan Graham, Scott Gozdzialski
 output:
   html_document:
     keep_md: true
 ---
-
-#Introduction
-With the global market in flux the last few years and the rising cost of higher education, people are wondering if investment in higher education is worth the cost. Governments are also starting to wonder if the investment into higher education is justified when budget dollars could be spent on other needed projects. The DDS task force was created to provide guidance to governments and prospective students about the relationship between education and gross domestic product. The following analysis is performed based on Worldbank data on education and gross domestic product from 190 countries.
-
-```{r}
-# Grab our merged_data file and import it into the current R session for use later.
+```{r echo=FALSE}
 Data = read.table(file.path("data", "merged_data.csv"), header = TRUE, encoding='UTF-8')
 ```
 
+#Introduction
+The global economy is accelerating at a rapid pace.  The World Bank, which is the world's largest development institution, looks at influencing factors like climate change, conflict, food security, education, agriculture, finance, and trade.  Questions are being asked about Gross Domestic Product (GDP) and Income categories for 189 countries in which there is sufficient data to analyze. 
+
+The data source for this analysis is from the World Bank's Education Statistics (http://datatopics.worldbank.org/education/) web site for basic information on a country, including income grouping, date of last census data, systems of trade, government accounting approach, and many others basic data points except GDP. The GDP information, also from the World Bank, is not a part of the Education Statistics information collection and dissemination. 
+
+It is important to note that the World Bank's Education Statistics (EDSstat) does differentiate between countries that participate in the Organization of Economic Cooperation and Development (OECD). The OECD was founded in 1960 and contains 35 member countries today, including the United States, United Kingdom, and Germany.  The goal of this organization is to help developing countries create and sustain economic prosperity.  In this analysis, the  "Income Group" used in the ranking of GDP for a country does contain an indicator of whether a high income country is part of the OECD. 
+
+This analysis takes a closer look at the relationship between GDP and Income Groups.
+
+
+
 ###1. With the merged data frame how many IDs matched?
-Comparing the merged the Educational data with the GDP data shows 189 observations.
+
+When we merged the Educational data with the GDP data we were bound to have some that did not match.
+The number that we ended up mathing together is listed below.
 ```{r}
-# Count the number of rows from our merged data.
 nrow(Data)
 ```
 ###2. With the the data frame in decending order by GDP(United States last) what is the 13th value?
-Looking into the data, the 13th value, baseed on descending GDP, the value found is,<br/>
-<b>93         KNA St. Kitts and Nevis 767 Upper middle income</b>
+
 ```{r}
-# Sort data in descending order based on GDP.
+# reorder by GDP
 Data = Data[order(Data$GDP),]
-# Print 13-th data frame.
+# print 13-th
 print(Data[c(13), ])
 ```
 
-###3. What are the average GDP rankings for the "High income: OECD" and "High Income:nonOECD" groups?
-These data show the average rankings
+###3. What are the average GDP rankings for the "High Income: OECD" and "High Income:nonOECD" groups?
 
-| High income: OECD | High income: nonOECD |
-| --- | --- |
-| 157.0333 | 98.34783 |
-
+Comments
 ```{r}
 Data$GDP.rankings = rank(Data$GDP)
 OECD_rankings = Data$GDP.rankings[Data$Income.Group == "High income: OECD"]
 print(mean(OECD_rankings))
 nonOECD_rankings = Data$GDP.rankings[Data$Income.Group == "High income: nonOECD"]
-print(mean(nonOECD_rankings))
+print(mean(nonOECD_rankings)) 
 ```
+###4. 1	Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.
 
-###4. 1	Plot the GDP for all of the countries.
-The following is a plot of th GDP for all countries.
+Comments
 ```{r kable}
-# install ggplot2 in case its not
+# install ggplot2 and scales in case its not
 if("ggplot2" %in% rownames(installed.packages()) == FALSE){
   install.packages("ggplot2", repos = structure(c(CRAN = "http://cran.r-project.org")))
 }
-# load the package
-require(ggplot2)
-# Use ggplot2 to color the plot by Income Group.
-qplot(Data$GDP, Data$GDP.rankings, color = Data$Income.Group)
-```
-
-### 5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group.
-### How many countries are "lower middle income" but within the 38 nations with the highest GDP?
-
-```{r}
-# install dplyr in case its not
-if("dplyr" %in% rownames(installed.packages()) == FALSE){
-  install.packages("dplyr", repos = structure(c(CRAN = "http://cran.r-project.org")))
+if("scales" %in% rownames(installed.packages()) == FALSE){
+  install.packages("scales", repos = structure(c(CRAN = "http://cran.r-project.org")))
 }
-# load dplyr
-library(dplyr)
-# ntile is a function from dplyr
-# ntile will split the rankings to 5 quantile groups
-Data$QuantGroup <- ntile(Data$GDP.rankings, 5)
-# I dont know what this means: Make a table versus Income.Group
-#     is this is?
-knitr::kable(Data[c('QuantGroup', 'Income.Group')])
+if("Hmisc" %in% rownames(installed.packages()) == FALSE){
+  install.packages("Hmisc", repos = structure(c(CRAN = "http://cran.r-project.org")))
+}
+if("lattice" %in% rownames(installed.packages()) == FALSE){
+  install.packages("lattice", repos =structure(c(CRAN = "http://cran.r-project.org")))
+}  
+  
+# load the packages
+require(ggplot2)
+require(scales)  # allows for setting up the ggplot
+require (Hmisc) # for conclusion
+require (lattice) # for histograms in conclusion
+
+options(scipen=10000)  # gets rid of the exponential numbers on the Y axis
+
+ggplot (Data, aes(x=Data$Income.Group, y=Data$GDP)) + # sets up GGPLOT2 scatter plot
+  scale_y_continuous(name="GDP -- In USD$ Millions", labels= scales::comma, expand = c(0,0), limits=c(0, 20000000), breaks=seq(0,18000000, 2000000))  + #sets up Y axis with labels and range
+  scale_x_discrete ("Income Group", labels = c("Low income" = "LI", "High income: nonOECD" = "nHI", "High income: OECD" = "oHI", "Lower middle income" = "LMI", "Upper middle income" = "UMI")) + # sets up x axis for abbreviates of categorical variable to prevent overlap and promote readability
+  theme (aspect.ratio = 2/1) + #sets up aspect ratio so consistent with each output
+  geom_point(aes(color = Data$Income.Group)) +  #sets up colored points
+  scale_color_discrete (name="Income Group") #changes legend title
+
+```   
+
+###5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group.
+##   How many countries are "lower middle income" but within the 38 nations with the highest GDP?
+
+Comments
+```{r}
+# Split the rankings to 5 quantile groups
+OrderData <- Data[order(Data$GDP.rankings), c(1:4)]
+colNames <- c("Country Name", "Country Code", "GDP in Millions USD$", "Income Group")
+knitr::kable (OrderData[c('CountryName', 'CountryCode', 'GDP', 'Income.Group')], col.names = colNames, align = 'c', caption = "Ranking in Income Group")
+
 top38 <- tail(Data, n = 38)
 # this answer: How many countries are "lower middle income" but within the 38 nations with the highest GDP
 print(NROW(top38[top38$Income.Group == 'Lower middle income', ]))
+
 ```
 
-Conclusion
+###Conclusion
+
+There are many factors that influence a country's GDP and overall prosperity.  This data analysis effort looks at GDP and the categories of Income Group as provided by the World Bank data.  The Income Group is made up of High Income: non OECD; High Income: OECD, Upper Middle Income; Lower Middle Income; and Low Income. All conclusions were measured in millions of USD$.  
+
+Initial testing of this data includes a t-test, scatterplot and histogram of GDP.  For the mean GDP t-test, we reject the null hypothesis that GDP = 0 based on a 95% confidence level that the true GDP mean is between $170,839.4 Million and $588,353.7 Million (pvalue = 0.0004264).
+
+```{r}
+GDPmatrix <- matrix(Data$GDP)
+t.test(GDPmatrix)
+```
+  
+The histogram of GDP shows a severe right skew, indicating an asysmetrical distribution.  
+
+```{r}
+col1 <- c("Min", "1st Qu.", "Median", "Mean", "3rd Qu.", "Max.")
+summary(Data$GDP, "html", caption = "Summary Statistics of GDP", col.names=col1, align='c' )
+
+hist(Data$GDP, breaks=5, main= "Histogram of GDP Data\n In Millions USD$", xlab = "GDP", ylab="Millions USD$", col="blue")
+
+```
+  
+This is due to a few countries with large GDP, like the United States at $16,244,600 Million. The right skewedness also indicates the mean is greater than the median, making the median at $28,240 Million a better overall indicator of GDP across the data set.
+
+A smooth scatterplot of GDP does not visually confirm a linear relationship.  
+```{r}
+smoothScatter (Data$GDP, ylab="GDP in Millions USD$")
+``` 
+  
+A second look at the category breakdown shows unexpected assignment of countries to Income Group categories.  Below is a subset of the Income Group by countries with a GDP greater than $1,000,000 Million.
+```{r}
+cutoff <- Data[Data$GDP >= 1000000,]
+print (cutoff[,-5:-6])
+```
+We see India with a GDP of $1,841,710 Million and yet its Income Group is Lower Middle Income. Additionally, China is the second largest GDP in this list of 189 countries at $8,227,103 Million.  And yet, it is in the Lower Middle Income category as well. It is unknown what other attributes contribute to the assigning of countries to Income Group subcategories. As a warning, more information would be needed to explain the assignment to Income Group.
+
+The better approach to test the significance of the GDP related to Income Group is to use the Krusal-Wallis test, which tests for statistical difference across the Income Groups based on median.  The Krusal- Wallis test indicates that the median of the five Income Groups are not the same (p-value= 0.000000000003617, df=4, chi-squared = 59.544).
+```{r}
+kruskal.test(Data$GDP ~ Data$Income.Group, data = Data)
+```
+From this limited data, we can determine 
+
+###Holding area:  TEMP!!   
+How do i subset Data$Income.Group for only the 2 HIgh Income factors to run post hoc test against each other. I think there may be useful data in the increased GDP of OECD countries vs those that are not.
+
+GDPmatrix <- matrix(Data$GDP)
+rcorr (GDPmatrix, Data$Income.Group, type=c("pearson", "spearman"))
+chisq.test (GDPmatrix)  

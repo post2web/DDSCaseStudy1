@@ -13,7 +13,7 @@
 * Analysis.Rmd - contains all analysis of the data
 * data - a folder container for the data files
 * source - a folder containing all scripts used for downloading and cleaning
-* source/donload.R - a script used for donloading the csv data files
+* source/download.R - a script used for downloading the csv data files
   * downloads [GDP data](https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv) and saves it as gdp.csv
   * downloads [Country Income Grups data](https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv) and saves it as income_groups.csv
 * source/clean_gdp.R - a script used for cleaning the gdp data
@@ -49,4 +49,4 @@ git push
 ### Todo list: ( push as soon as you make a change )
 - [ ] Coment the code base
 - [ ] Add text to the R Markdown files
-- [ ] Make the output of the R Markdown files pretty
+- [ ] Make the output of the R Markdown files pretty - lvb started.
