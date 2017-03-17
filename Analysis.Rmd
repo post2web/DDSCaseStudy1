@@ -7,9 +7,6 @@ output:
   pdf_document: default
 authors: Ivelin Angelov, Laura Bishop, Ethan Graham, Scott Gozdzialski
 ---
-```{r echo=FALSE}
-Data = read.table(file.path("data", "merged_data.csv"), header = TRUE, encoding='UTF-8')
-```
 
 # Introduction
 The global economy is accelerating at a rapid pace.
@@ -30,6 +27,8 @@ Merging the Data from the EDStats with the GDP data, it is expected that some of
 Looking at the data from both sets and merging them together we end up with some data points that do not have information in the GDP, so we did not include those values in the data.
 
 ```{r}
+# Load the merged tidy data file
+Data = read.table(file.path("data", "merged_data.csv"), header = TRUE, encoding='UTF-8')
 cat('There are', nrow(Data), 'rows of clean merged data for further analysis.')
 ```
 
@@ -94,7 +93,7 @@ ggplot (Data, aes(x=Data$Income.Group, y=Data$GDP)) +
   scale_x_discrete(
     "Income Group",
     labels = c("Low income" = "LI", "High income: nonOECD" = "nHI", "High income: OECD" = "oHI", "Lower middle income" = "LMI", "Upper middle income" = "UMI")
-    ) + 
+  ) + 
   # Sets up aspect ratio so consistent with each output
   theme(aspect.ratio = 2/1) + 
   # Sets up colored points
