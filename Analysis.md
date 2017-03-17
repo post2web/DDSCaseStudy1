@@ -3,7 +3,7 @@ Ivelin Angelov, Laura Bishop, Ethan Graham, Scott Gozdzialski
 10-03-2017  
 
 
-#Introduction
+# Introduction
 The global economy is accelerating at a rapid pace.
 The World Bank, which is the world's largest development institution, looks at influencing factors like climate change, conflict, food security, education, agriculture, finance, and trade.
 Questions are being asked about Gross Domestic Product (GDP) and Income categories for 189 countries in which there is sufficient data to analyze. 
@@ -16,7 +16,7 @@ In this analysis, the  "Income Group" used in the ranking of GDP for a country d
 
 This analysis takes a closer look at the relationship between GDP and Income Groups.
 
-###1. With the merged data frame how many IDs matched?
+## 1. With the merged data frame how many IDs matched?
 
 Merging the Data from the EDStats with the GDP data, it is expected that some of the row will not perfectly match up.
 Looking at the data from both sets and merging them together we end up with some data points that do not have information in the GDP, so we did not include those values in the data.
@@ -31,7 +31,7 @@ cat('There are', nrow(Data), 'rows of clean merged data for further analysis.')
 ```
 
 
-###2. With the the data frame in decending order by GDP(United States last) what is the 13th value?
+## 2. With the the data frame in decending order by GDP(United States last) what is the 13th value?
 So you maybe wondering where different countries lie within this list of countries or what country lies in which position.
 Here is an example of which county lie at the thirteenth position if we order the data in decending order.
 This lists row in unordered data frame, three letter country code, countyr name, GDP in millions of US dollars, and finaly which  Organization of Economic Cooperation and Developement group it belongs.
@@ -48,7 +48,7 @@ cat('The 13th country in the sorted dataset is:', as.character(Data$CountryName[
 ## The 13th country in the sorted dataset is: St. Kitts and Nevis
 ```
 
-###3. What are the average GDP rankings for the "High Income: OECD" and "High Income:nonOECD" groups?
+## 3. What are the average GDP rankings for the "High Income: OECD" and "High Income:nonOECD" groups?
 
 We have talked about different groups as classified by the Organization of Economic Cooperation and Development (OECD).
 There are five different groups.
@@ -76,7 +76,7 @@ cat('The high income nonOECD group had an average GDP of', mean(nonOECD_rankings
 ```
 You can see the OECD group has a higher average GDP.
 
-### 4. 1	Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.
+## 4.1 Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.
 
 It is hard to visualize all the data of the countries we have in our data frame in our minds.
 To help with this we will plot that different groups in a chart below.
@@ -84,73 +84,42 @@ To help with this we will plot that different groups in a chart below.
 ```r
 # Load needed packages
 require(ggplot2)
-```
-
-```
-## Loading required package: ggplot2
-```
-
-```r
 # Allows for setting up the ggplot
 require(scales) 
-```
-
-```
-## Loading required package: scales
-```
-
-```r
 # For conclusion
 require (Hmisc) 
-```
-
-```
-## Loading required package: Hmisc
-```
-
-```
-## Loading required package: lattice
-```
-
-```
-## Loading required package: survival
-```
-
-```
-## Loading required package: Formula
-```
-
-```
-## 
-## Attaching package: 'Hmisc'
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     format.pval, round.POSIXt, trunc.POSIXt, units
-```
-
-```r
 # For histograms in conclusion
 require (lattice) 
 
 # Gets rid of the exponential numbers on the Y axis
 options(scipen=10000)  
 
-# Output the plot
-ggplot (Data, aes(x=Data$Income.Group, y=Data$GDP)) + # sets up GGPLOT2 scatter plot
-  scale_y_continuous(name="GDP -- In USD$ Millions", labels= scales::comma, expand = c(0,0), limits=c(0, 20000000), breaks=seq(0,18000000, 2000000))  + #sets up Y axis with labels and range
-  scale_x_discrete ("Income Group", labels = c("Low income" = "LI", "High income: nonOECD" = "nHI", "High income: OECD" = "oHI", "Lower middle income" = "LMI", "Upper middle income" = "UMI")) + # sets up x axis for abbreviates of categorical variable to prevent overlap and promote readability
-  theme (aspect.ratio = 2/1) + #sets up aspect ratio so consistent with each output
-  geom_point(aes(color = Data$Income.Group)) +  #sets up colored points
-  scale_color_discrete (name="Income Group") #changes legend title
+# Sets up GGPLOT2 scatter plot
+ggplot (Data, aes(x=Data$Income.Group, y=Data$GDP)) + 
+  # Sets up Y axis with labels and range
+  scale_y_continuous(
+    name="GDP -- In USD$ Millions",
+    labels= scales::comma,
+    expand = c(0,0),
+    limits=c(0, 20000000),
+    breaks=seq(0,18000000, 2000000)
+    ) + 
+  # Sets up x axis for abbreviates of categorical variable to prevent overlap and promote readability
+  scale_x_discrete(
+    "Income Group",
+    labels = c("Low income" = "LI", "High income: nonOECD" = "nHI", "High income: OECD" = "oHI", "Lower middle income" = "LMI", "Upper middle income" = "UMI")
+    ) + 
+  # Sets up aspect ratio so consistent with each output
+  theme(aspect.ratio = 2/1) + 
+  # Sets up colored points
+  geom_point(aes(color = Data$Income.Group)) +  
+  # Changes legend title
+  scale_color_discrete (name="Income Group")
 ```
 
 ![](Analysis_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
-##5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group.
-##   How many countries are "lower middle income" but within the 38 nations with the highest GDP?
+## 5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group. How many countries are "lower middle income" but within the 38 nations with the highest GDP?
 Looking at the chart above we can see that the groups are not built on GDP alone.
 The selection into the igh income and member of the OECD, the high income and non-member OECD, the upper middle income, the middle income, and the low income groups come from many variables.
 With this knowledge we can see that some members of the lower income groups may have the higher GDP then members of the high income group.
@@ -1518,7 +1487,7 @@ cat('There are', NROW(top38[top38$Income.Group == 'Lower middle income', ]), 'co
 ```
 ## There are 5 countries "lower middle income" but within the 38 nations with the highest GDP
 ```
-##Conclusion
+## Conclusion
 There are many factors that influence a country's GDP and overall prosperity.
 This data analysis effort looks at GDP and the categories of Income Group as provided by the World Bank data.
 Many thing were looked at in this analysis of Gross Domestic Products of different contries around the world.

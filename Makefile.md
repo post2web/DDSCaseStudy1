@@ -134,7 +134,9 @@ rmarkdown::render("Analysis.Rmd")
 ## 
   |                                                                       
   |............................                                     |  43%
-## label: unnamed-chunk-5
+## label: unnamed-chunk-5 (with options) 
+## List of 1
+##  $ message: symbol F
 ```
 
 ```
@@ -191,7 +193,10 @@ rmarkdown::render("Analysis.Rmd")
 ## 
   |                                                                       
   |.........................................................        |  87%
-## label: unnamed-chunk-10
+## label: unnamed-chunk-10 (with options) 
+## List of 1
+##  $ message: symbol F
+## 
 ## 
   |                                                                       
   |...........................................................      |  91%
@@ -207,7 +212,7 @@ rmarkdown::render("Analysis.Rmd")
 ##   ordinary text without R code
 ## 
 ## 
-## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS Analysis.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output Analysis.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /var/folders/df/2w6dv0r11pb69jhk8lzjjb_m0000gn/T//RtmpYp7r6u/rmarkdown-str12908139867ac.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS Analysis.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output Analysis.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /var/folders/df/2w6dv0r11pb69jhk8lzjjb_m0000gn/T//Rtmp25MzOh/rmarkdown-str129ce479616ad.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
 ```
 
 ```r
