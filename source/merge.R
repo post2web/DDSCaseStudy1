@@ -1,5 +1,5 @@
 # this file is used to merge income_groups_tidy.csv + gdp_tidy.csv -> merged_data.csv
-# platform independent path for the data dir
+# authors: Ivelin Angelov, Laura Bishop, Ethan Graham, Scott Gozdzialski
 
 # load tidy country data
 gdp <- read.table(file.path('data', "gdp_tidy.csv"), header = TRUE)

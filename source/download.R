@@ -1,5 +1,6 @@
 # R code to download csv files for the project
 # to run this file you need to be in the root of the project
+# authors: Ivelin Angelov, Laura Bishop, Ethan Graham, Scott Gozdzialski
 
 # attempt to install downloader only in case not installed
 if("downloader" %in% rownames(installed.packages()) == FALSE){

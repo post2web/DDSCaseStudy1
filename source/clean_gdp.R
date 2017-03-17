@@ -1,5 +1,7 @@
 # this file is used to clean gdp.csv -> gdp_tidy.csv
 # to run this file you need to be in the root of the project
+# authors: Ivelin Angelov, Laura Bishop, Ethan Graham, Scott Gozdzialski
+
 #Read EDS Country file
 file_obj = file(file.path('data', "gdp.csv"))
 df <- read.csv(file_obj, header = FALSE, sep = ',', skip = 5, nrows = 190)
