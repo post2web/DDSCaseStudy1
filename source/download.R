@@ -1,4 +1,4 @@
-## This file is used for downloading all necessary for the project csv data files.
+## This file is used for downloading of all necessary for the project csv data files.
 # In order to run this file you need to have R Working Directory set to the root of the project.
 # Authors: Ivelin Angelov, Laura Bishop, Ethan Graham, Scott Gozdzialski
 
@@ -9,7 +9,7 @@ if("downloader" %in% rownames(installed.packages()) == FALSE){
 # Load package "downloader"
 require(downloader)
 
-# Download GDP data
+# Download GDP data to file data/gdp.csv
 url = 'https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FGDP.csv'
 download.file(url = url, destfile = file.path("data", "gdp.csv"))
 cat("GDP Data was downloaded successfully! \n")

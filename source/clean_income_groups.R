@@ -17,4 +17,4 @@ df <- data.frame(lapply(df, trimws))
 # Write the resulting tidy data in file data/income_groups_tidy.csv
 write.table(df, file.path('data', "income_groups_tidy.csv"), row.names = FALSE)
 
-cat("Income grpus data was cleaned\n")
+cat("Income grpus data was cleaned successfully!\n")

@@ -39,4 +39,4 @@ df <- df[is.finite(df$GDP), ]
 # Write the resulting tidy data into file data/gdp_tidy.csv
 write.table(df, file.path('data', "gdp_tidy.csv"), row.names = FALSE)
 
-cat("Country data was cleaned\n")
+cat("Country data was cleaned successfully!\n")

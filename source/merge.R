@@ -14,4 +14,4 @@ merged_data <- merge(gdp, income_groups, by = 'CountryCode')
 # Write the resulting tidy data into file data/merged_data.csv
 write.table(merged_data, file.path('data', "merged_data.csv"), row.names = FALSE)
 
-cat("Data was merged\n")
+cat("The two data files were merged successfully!\n")
