@@ -53,43 +53,34 @@ There are five different groups.
 They are the high income and member of the OECD, the high income and non-member OECD, the upper middle income, the middle income, and the low income groups.
 Now for us to look if there is a difference between being a member of the OECD makes a difference the only way we can do that is by comparing the the average incomes of the high income OECD to the high income nonOECD, since they are the only groups with a counter part.<br/> 
 
-```{r}
+```{r }
 Data$GDP.rankings = rank(Data$GDP)
 OECD_rankings = Data$GDP.rankings[Data$Income.Group == "High income: OECD"]
 cat('The "High income: OECD" group has an average GDP of', mean(OECD_rankings),'millions in US dollars.')
 
 nonOECD_rankings = Data$GDP.rankings[Data$Income.Group == "High income: nonOECD"]
-cat('The high income nonOECD group had an average GDP of', mean(nonOECD_rankings), 'millions in US dollars.') 
+cat('The high income nonOECD group had an average GDP of', mean(nonOECD_rankings), 'millions in US dollars.')
 ```
 You can see the OECD group has a higher average GDP.
 
-###4. 1	Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.
+### 4. 1	Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.
 
 It is hard to visualize all the data of the countries we have in our data frame in our minds.
 To help with this we will plot that different groups in a chart below.
-```{r kable}
-# install ggplot2 and scales in case its not
-if("ggplot2" %in% rownames(installed.packages()) == FALSE){
-  install.packages("ggplot2", repos = structure(c(CRAN = "http://cran.r-project.org")))
-}
-if("scales" %in% rownames(installed.packages()) == FALSE){
-  install.packages("scales", repos = structure(c(CRAN = "http://cran.r-project.org")))
-}
-if("Hmisc" %in% rownames(installed.packages()) == FALSE){
-  install.packages("Hmisc", repos = structure(c(CRAN = "http://cran.r-project.org")))
-}
-if("lattice" %in% rownames(installed.packages()) == FALSE){
-  install.packages("lattice", repos = structure(c(CRAN = "http://cran.r-project.org")))
-}  
-  
-# load the packages
+```{r message=F}
+# Load needed packages
 require(ggplot2)
-require(scales)  # allows for setting up the ggplot
-require (Hmisc) # for conclusion
-require (lattice) # for histograms in conclusion
+# Allows for setting up the ggplot
+require(scales) 
+# For conclusion
+require (Hmisc) 
+# For histograms in conclusion
+require (lattice) 
 
-options(scipen=10000)  # gets rid of the exponential numbers on the Y axis
+# Gets rid of the exponential numbers on the Y axis
+options(scipen=10000)  
 
+# Output the plot
 ggplot (Data, aes(x=Data$Income.Group, y=Data$GDP)) + # sets up GGPLOT2 scatter plot
   scale_y_continuous(name="GDP -- In USD$ Millions", labels= scales::comma, expand = c(0,0), limits=c(0, 20000000), breaks=seq(0,18000000, 2000000))  + #sets up Y axis with labels and range
   scale_x_discrete ("Income Group", labels = c("Low income" = "LI", "High income: nonOECD" = "nHI", "High income: OECD" = "oHI", "Lower middle income" = "LMI", "Upper middle income" = "UMI")) + # sets up x axis for abbreviates of categorical variable to prevent overlap and promote readability
@@ -105,21 +96,19 @@ The selection into the igh income and member of the OECD, the high income and no
 With this knowledge we can see that some members of the lower income groups may have the higher GDP then members of the high income group.
 So, how many of the countries in the top 38 GDPs are actual in the lower middle income?  
 
-```{r }
-if("DT" %in% rownames(installed.packages()) == FALSE){
-  install.packages("DT", repos = structure(c(CRAN = "http://cran.r-project.org")))
-}
-require('DT')
+```{r message=F}
 # Split the rankings to 5 quantile groups
 OrderData <- Data[order(Data$GDP.rankings), c(1:4)]
 colNames <- c("Country Name", "Country Code", "GDP in Millions USD$", "Income Group")
-library(htmlTable)
+# Load the thml table package
+require('htmlTable')
+# Print a table
 htmlTable(
   OrderData[c('CountryName', 'CountryCode', 'GDP', 'Income.Group')],
   caption = "Ranking in Income Groups"
 )
 top38 <- tail(Data, n = 38)
-# an answer to the question: How many countries are "lower middle income" but within the 38 nations with the highest GDP
+# An answer to the question: How many countries are "lower middle income" but within the 38 nations with the highest GDP
 cat('There are', NROW(top38[top38$Income.Group == 'Lower middle income', ]), 'countries "lower middle income" but within the 38 nations with the highest GDP')
 
 ```
@@ -172,10 +161,10 @@ smoothScatter (Data$GDP, ylab="GDP in Millions USD$")
 A second look at the category breakdown shows unexpected assignment of countries to Income Group categories.
 Below is a subset of the Income Group by countries with a GDP greater than $1,000,000 Million.
 ```{r}
+require('htmlTable')
 cutoff <- Data[Data$GDP >= 1000000,]
-datatable(
+htmlTable(
   cutoff[,-5:-6],
-  options = list(pageLength = 15, searching = FALSE),
   caption = "Ranking in Income Groups"
 )
 

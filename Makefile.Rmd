@@ -6,11 +6,22 @@ output:
 authors: Ivelin Angelov, Laura Bishop, Ethan Graham, Scott Gozdzialski
 ---
 # This is the project's Makefile.
-This file will execute the tasks: download, clean, merge and render
+This file will execute the tasks: dependencies, download, clean, merge and render
 All tasks are in separate cells and represent steps towards the final data analysis of the "Case Study 1" prject.
 In order to keep the project modular and easy to maintain, we keep the code for all tasks into separate R files.
 
 #### <font color='red'>In order to Knit this file you need to have R Working Directory set to the root of the project.</font>
+
+## Dependencies
+Before we start, we make sure all packages needed for the project are installed.
+```{r dependencies, message=F}
+needed_packages = c('downloader', 'ggplot2', 'scales', 'Hmisc', 'lattice', 'htmlTable')
+for (needed_package in needed_packages) {
+  if(needed_package %in% rownames(installed.packages()) == FALSE) {
+    install.packages(needed_package, repos = structure(c(CRAN = "http://cran.r-project.org")))
+  }
+}
+```
 
 ## Download
 This taks is used for downloading of all necessary for the project csv data files.

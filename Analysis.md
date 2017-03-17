@@ -68,7 +68,7 @@ cat('The "High income: OECD" group has an average GDP of', mean(OECD_rankings),'
 
 ```r
 nonOECD_rankings = Data$GDP.rankings[Data$Income.Group == "High income: nonOECD"]
-cat('The high income nonOECD group had an average GDP of', mean(nonOECD_rankings), 'millions in US dollars.') 
+cat('The high income nonOECD group had an average GDP of', mean(nonOECD_rankings), 'millions in US dollars.')
 ```
 
 ```
@@ -76,78 +76,25 @@ cat('The high income nonOECD group had an average GDP of', mean(nonOECD_rankings
 ```
 You can see the OECD group has a higher average GDP.
 
-###4. 1	Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.
+### 4. 1	Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.
 
 It is hard to visualize all the data of the countries we have in our data frame in our minds.
 To help with this we will plot that different groups in a chart below.
 
 ```r
-# install ggplot2 and scales in case its not
-if("ggplot2" %in% rownames(installed.packages()) == FALSE){
-  install.packages("ggplot2", repos = structure(c(CRAN = "http://cran.r-project.org")))
-}
-if("scales" %in% rownames(installed.packages()) == FALSE){
-  install.packages("scales", repos = structure(c(CRAN = "http://cran.r-project.org")))
-}
-if("Hmisc" %in% rownames(installed.packages()) == FALSE){
-  install.packages("Hmisc", repos = structure(c(CRAN = "http://cran.r-project.org")))
-}
-if("lattice" %in% rownames(installed.packages()) == FALSE){
-  install.packages("lattice", repos = structure(c(CRAN = "http://cran.r-project.org")))
-}  
-  
-# load the packages
+# Load needed packages
 require(ggplot2)
-```
+# Allows for setting up the ggplot
+require(scales) 
+# For conclusion
+require (Hmisc) 
+# For histograms in conclusion
+require (lattice) 
 
-```
-## Loading required package: ggplot2
-```
+# Gets rid of the exponential numbers on the Y axis
+options(scipen=10000)  
 
-```r
-require(scales)  # allows for setting up the ggplot
-```
-
-```
-## Loading required package: scales
-```
-
-```r
-require (Hmisc) # for conclusion
-```
-
-```
-## Loading required package: Hmisc
-```
-
-```
-## Loading required package: lattice
-```
-
-```
-## Loading required package: survival
-```
-
-```
-## Loading required package: Formula
-```
-
-```
-## 
-## Attaching package: 'Hmisc'
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     format.pval, round.POSIXt, trunc.POSIXt, units
-```
-
-```r
-require (lattice) # for histograms in conclusion
-
-options(scipen=10000)  # gets rid of the exponential numbers on the Y axis
-
+# Output the plot
 ggplot (Data, aes(x=Data$Income.Group, y=Data$GDP)) + # sets up GGPLOT2 scatter plot
   scale_y_continuous(name="GDP -- In USD$ Millions", labels= scales::comma, expand = c(0,0), limits=c(0, 20000000), breaks=seq(0,18000000, 2000000))  + #sets up Y axis with labels and range
   scale_x_discrete ("Income Group", labels = c("Low income" = "LI", "High income: nonOECD" = "nHI", "High income: OECD" = "oHI", "Lower middle income" = "LMI", "Upper middle income" = "UMI")) + # sets up x axis for abbreviates of categorical variable to prevent overlap and promote readability
@@ -156,7 +103,7 @@ ggplot (Data, aes(x=Data$Income.Group, y=Data$GDP)) + # sets up GGPLOT2 scatter 
   scale_color_discrete (name="Income Group") #changes legend title
 ```
 
-![](Analysis_files/figure-html/kable-1.png)<!-- -->
+![](Analysis_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
 ##5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group.
 ##   How many countries are "lower middle income" but within the 38 nations with the highest GDP?
@@ -167,21 +114,12 @@ So, how many of the countries in the top 38 GDPs are actual in the lower middle 
 
 
 ```r
-if("DT" %in% rownames(installed.packages()) == FALSE){
-  install.packages("DT", repos = structure(c(CRAN = "http://cran.r-project.org")))
-}
-require('DT')
-```
-
-```
-## Loading required package: DT
-```
-
-```r
 # Split the rankings to 5 quantile groups
 OrderData <- Data[order(Data$GDP.rankings), c(1:4)]
 colNames <- c("Country Name", "Country Code", "GDP in Millions USD$", "Income Group")
-library(htmlTable)
+# Load the thml table package
+require('htmlTable')
+# Print a table
 htmlTable(
   OrderData[c('CountryName', 'CountryCode', 'GDP', 'Income.Group')],
   caption = "Ranking in Income Groups"
@@ -1529,7 +1467,7 @@ Ranking in Income Groups</td></tr>
 
 ```r
 top38 <- tail(Data, n = 38)
-# an answer to the question: How many countries are "lower middle income" but within the 38 nations with the highest GDP
+# An answer to the question: How many countries are "lower middle income" but within the 38 nations with the highest GDP
 cat('There are', NROW(top38[top38$Income.Group == 'Lower middle income', ]), 'countries "lower middle income" but within the 38 nations with the highest GDP')
 ```
 
@@ -1597,7 +1535,7 @@ summary(Data$GDP, "html", caption = "Summary Statistics of GDP", col.names=col1,
 hist(Data$GDP, breaks=5, main= "Histogram of GDP Data\n In Millions USD$", xlab = "GDP", ylab="Millions USD$", col="blue")
 ```
 
-![](Analysis_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](Analysis_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
   
 This is due to a few countries with large GDP, like the United States at $16,244,600 Million.
 The right skewedness also indicates the mean is greater than the median, making the median at $28,240 Million a better overall indicator of GDP across the data set.<br/>
@@ -1608,22 +1546,140 @@ A smooth scatterplot of GDP does not visually confirm a linear relationship.
 smoothScatter (Data$GDP, ylab="GDP in Millions USD$")
 ```
 
-![](Analysis_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](Analysis_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
   
 A second look at the category breakdown shows unexpected assignment of countries to Income Group categories.
 Below is a subset of the Income Group by countries with a GDP greater than $1,000,000 Million.
 
 ```r
+require('htmlTable')
 cutoff <- Data[Data$GDP >= 1000000,]
-datatable(
+htmlTable(
   cutoff[,-5:-6],
-  options = list(pageLength = 15, searching = FALSE),
   caption = "Ranking in Income Groups"
 )
 ```
 
-<!--html_preserve--><div id="htmlwidget-2380a3732a136b6e490d" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2380a3732a136b6e490d">{"x":{"filter":"none","caption":"<caption>Ranking in Income Groups\u003c/caption>","data":[["94","112","53","9","31","78","84","145","25","61","58","45","87","34","178"],["KOR","MEX","ESP","AUS","CAN","IND","ITA","RUS","BRA","GBR","FRA","DEU","JPN","CHN","USA"],["Korea, Rep.","Mexico","Spain","Australia","Canada","India","Italy","Russian Federation","Brazil","United Kingdom","France","Germany","Japan","China","United States"],[1129598,1178126,1322965,1532408,1821424,1841710,2014670,2014775,2252664,2471784,2612878,3428131,5959718,8227103,16244600],["High income: OECD","Upper middle income","High income: OECD","High income: OECD","High income: OECD","Lower middle income","High income: OECD","Upper middle income","Upper middle income","High income: OECD","High income: OECD","High income: OECD","High income: OECD","Lower middle income","High income: OECD"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> \u003c/th>\n      <th>CountryCode\u003c/th>\n      <th>CountryName\u003c/th>\n      <th>GDP\u003c/th>\n      <th>Income.Group\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"pageLength":15,"searching":false,"columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,15,25,50,100]}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><table class='gmisc_table' style='border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;' >
+<thead>
+<tr><td colspan='5' style='text-align: left;'>
+Ranking in Income Groups</td></tr>
+<tr>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey;'> </th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>CountryCode</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>CountryName</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>GDP</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Income.Group</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style='text-align: left;'>94</td>
+<td style='text-align: center;'>KOR</td>
+<td style='text-align: center;'>Korea, Rep.</td>
+<td style='text-align: center;'>1129598</td>
+<td style='text-align: center;'>High income: OECD</td>
+</tr>
+<tr>
+<td style='text-align: left;'>112</td>
+<td style='text-align: center;'>MEX</td>
+<td style='text-align: center;'>Mexico</td>
+<td style='text-align: center;'>1178126</td>
+<td style='text-align: center;'>Upper middle income</td>
+</tr>
+<tr>
+<td style='text-align: left;'>53</td>
+<td style='text-align: center;'>ESP</td>
+<td style='text-align: center;'>Spain</td>
+<td style='text-align: center;'>1322965</td>
+<td style='text-align: center;'>High income: OECD</td>
+</tr>
+<tr>
+<td style='text-align: left;'>9</td>
+<td style='text-align: center;'>AUS</td>
+<td style='text-align: center;'>Australia</td>
+<td style='text-align: center;'>1532408</td>
+<td style='text-align: center;'>High income: OECD</td>
+</tr>
+<tr>
+<td style='text-align: left;'>31</td>
+<td style='text-align: center;'>CAN</td>
+<td style='text-align: center;'>Canada</td>
+<td style='text-align: center;'>1821424</td>
+<td style='text-align: center;'>High income: OECD</td>
+</tr>
+<tr>
+<td style='text-align: left;'>78</td>
+<td style='text-align: center;'>IND</td>
+<td style='text-align: center;'>India</td>
+<td style='text-align: center;'>1841710</td>
+<td style='text-align: center;'>Lower middle income</td>
+</tr>
+<tr>
+<td style='text-align: left;'>84</td>
+<td style='text-align: center;'>ITA</td>
+<td style='text-align: center;'>Italy</td>
+<td style='text-align: center;'>2014670</td>
+<td style='text-align: center;'>High income: OECD</td>
+</tr>
+<tr>
+<td style='text-align: left;'>145</td>
+<td style='text-align: center;'>RUS</td>
+<td style='text-align: center;'>Russian Federation</td>
+<td style='text-align: center;'>2014775</td>
+<td style='text-align: center;'>Upper middle income</td>
+</tr>
+<tr>
+<td style='text-align: left;'>25</td>
+<td style='text-align: center;'>BRA</td>
+<td style='text-align: center;'>Brazil</td>
+<td style='text-align: center;'>2252664</td>
+<td style='text-align: center;'>Upper middle income</td>
+</tr>
+<tr>
+<td style='text-align: left;'>61</td>
+<td style='text-align: center;'>GBR</td>
+<td style='text-align: center;'>United Kingdom</td>
+<td style='text-align: center;'>2471784</td>
+<td style='text-align: center;'>High income: OECD</td>
+</tr>
+<tr>
+<td style='text-align: left;'>58</td>
+<td style='text-align: center;'>FRA</td>
+<td style='text-align: center;'>France</td>
+<td style='text-align: center;'>2612878</td>
+<td style='text-align: center;'>High income: OECD</td>
+</tr>
+<tr>
+<td style='text-align: left;'>45</td>
+<td style='text-align: center;'>DEU</td>
+<td style='text-align: center;'>Germany</td>
+<td style='text-align: center;'>3428131</td>
+<td style='text-align: center;'>High income: OECD</td>
+</tr>
+<tr>
+<td style='text-align: left;'>87</td>
+<td style='text-align: center;'>JPN</td>
+<td style='text-align: center;'>Japan</td>
+<td style='text-align: center;'>5959718</td>
+<td style='text-align: center;'>High income: OECD</td>
+</tr>
+<tr>
+<td style='text-align: left;'>34</td>
+<td style='text-align: center;'>CHN</td>
+<td style='text-align: center;'>China</td>
+<td style='text-align: center;'>8227103</td>
+<td style='text-align: center;'>Lower middle income</td>
+</tr>
+<tr>
+<td style='border-bottom: 2px solid grey; text-align: left;'>178</td>
+<td style='border-bottom: 2px solid grey; text-align: center;'>USA</td>
+<td style='border-bottom: 2px solid grey; text-align: center;'>United States</td>
+<td style='border-bottom: 2px solid grey; text-align: center;'>16244600</td>
+<td style='border-bottom: 2px solid grey; text-align: center;'>High income: OECD</td>
+</tr>
+</tbody>
+</table><!--/html_preserve-->
 We see India with a GDP of $1,841,710 Million and yet its Income Group is Lower Middle Income.
 Additionally, China is the second largest GDP in this list of 189 countries at $8,227,103 Million.
 And yet, it is in the Lower Middle Income category as well.
