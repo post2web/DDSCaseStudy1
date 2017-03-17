@@ -4,24 +4,29 @@ output:
   html_document:
     keep_md: true
 ---
+# This is the project's Makefile.
+This file will download, clean, and merge the data files needed for the analysis of the "Case Study 1" prject.
 
-download data files
-```{r download}
-source(file.path("source", "download.R"))
+#### <font color='red'>In order to Knit this file you need to have R Working Directory set to the root of the project.</font>
+
+### Download all necessary for the project csv data files.
+The files are downloaded from their original location as given by the assignment.
+```{r download, message=F}
+# Run the script in source/download.R
+# All paths will be created according to the host OS requirements
+source(file.path("source", "download.R"), verbose=FALSE)
 ```
-Tidy data
-```{r clean_data}
+### This cell will tidy the data files.
+```{r clean_data, message=F}
 source(file.path("source", "clean_gdp.R"))
 source(file.path("source", "clean_income_groups.R"))
 ```
-Merge data
-```{r merge_data}
+### Merge data the cleaned data files.
+The cell bellow will merge the two tidy files: clean_gdp.csv and clean_income_groups.csv into merge.csv
+```{r merge_data, message=F}
 source(file.path("source", "merge.R"))
 ```
-
-
-Render the Analysis
-```{r render}
+### Render the Analysis into a HTML file.
+```{r render, message=F}
 rmarkdown::render("Analysis.Rmd")
 ```
-
