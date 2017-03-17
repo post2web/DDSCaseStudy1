@@ -1,5 +1,7 @@
 ---
 title: "Gross Domestic Product Analysis"
+date: 10-03-2017
+authors: Ivelin Angelov, Laura Bishop, Ethan Graham, Scott Gozdzialski
 output:
   html_document:
     keep_md: true
