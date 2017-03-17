@@ -113,9 +113,9 @@ require('DT')
 # Split the rankings to 5 quantile groups
 OrderData <- Data[order(Data$GDP.rankings), c(1:4)]
 colNames <- c("Country Name", "Country Code", "GDP in Millions USD$", "Income Group")
-datatable(
+library(rhandsontable)
+rhandsontable(
   OrderData[c('CountryName', 'CountryCode', 'GDP', 'Income.Group')],
-  options = list(pageLength = 15),
   caption = "Ranking in Income Groups"
 )
 top38 <- tail(Data, n = 38)
