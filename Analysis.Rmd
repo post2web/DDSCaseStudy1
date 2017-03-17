@@ -1,7 +1,5 @@
 ---
 title: "Gross Domestic Product Analysis"
-date: 10-03-2017
-authors: Ivelin Angelov, Laura Bishop, Ethan Graham, Scott Gozdzialski
 output:
   html_document:
     keep_md: true
@@ -23,12 +21,14 @@ This analysis takes a closer look at the relationship between GDP and Income Gro
 
 ###1. With the merged data frame how many IDs matched?
 
-When we merged the Educational data with the GDP data we were bound to have some that did not match.
-The number that we ended up mathing together is listed below.
+Merging the Data from the EDStats with the GDP data, it is expected that some of the row will not perfectly match up.  Looking at the data from both sets and merging them together we end up with some data points that do not have information in the GDP, so we removed the NA data from the data.  This left us with 
 ```{r}
 nrow(Data)
 ```
+rows of clean merged data for further analysis.
+
 ###2. With the the data frame in decending order by GDP(United States last) what is the 13th value?
+So you maybe wondering where different countries lie within this list of countries or what country lies in which position.  Here is an example of which county lie at the thirteenth position if we order the data in decending order.  This lists row in unordered data frame, three letter country code, countyr name, GDP in millions of US dollars, and finaly which  Organization of Economic Cooperation and Developement group it belongs.
 
 ```{r}
 # reorder by GDP
@@ -39,17 +39,30 @@ print(Data[c(13), ])
 
 ###3. What are the average GDP rankings for the "High Income: OECD" and "High Income:nonOECD" groups?
 
-Comments
+We have talked about different groups as classified by the Organization of Economic Cooperation and Development (OECD).  There are five different groups.  They are the high income and member of the OECD, the high income and non-member OECD, the upper middle income, the middle income, and the low income groups.  Now for us to look if there is a difference between being a member of the OECD makes a difference the only way we can do that is by comparing the the average incomes of the high income OECD to the high income nonOECD, since they are the only groups with a counter part.  
+
+the high income OECD group has an average GDP of 
 ```{r}
 Data$GDP.rankings = rank(Data$GDP)
 OECD_rankings = Data$GDP.rankings[Data$Income.Group == "High income: OECD"]
 print(mean(OECD_rankings))
+```
+millions in US dollars.
+
+The high income nonOECD group had an average GDP of 
+```{r}
 nonOECD_rankings = Data$GDP.rankings[Data$Income.Group == "High income: nonOECD"]
 print(mean(nonOECD_rankings)) 
 ```
+millions in US dollars. You can see the OECD group has a higher average GDP.
+
+
+
+
+
 ###4. 1	Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.
 
-Comments
+It is hard to visualize all the data of the countries we have in our data frame in our minds.  To help with this we will plot that different groups in a chart below.
 ```{r kable}
 # install ggplot2 and scales in case its not
 if("ggplot2" %in% rownames(installed.packages()) == FALSE){
@@ -82,10 +95,10 @@ ggplot (Data, aes(x=Data$Income.Group, y=Data$GDP)) + # sets up GGPLOT2 scatter 
 
 ```   
 
-###5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group.
+##5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group.
 ##   How many countries are "lower middle income" but within the 38 nations with the highest GDP?
+Looking at the chart above we can see that the groups are not built on GDP alone.  The selection into the igh income and member of the OECD, the high income and non-member OECD, the upper middle income, the middle income, and the low income groups come from many variables.  With this knowledge we can see that some members of the lower income groups may have the higher GDP then members of the high income group. So, how many of the countries in the top 38 GDPs are actual in the lower middle income?  
 
-Comments
 ```{r}
 # Split the rankings to 5 quantile groups
 OrderData <- Data[order(Data$GDP.rankings), c(1:4)]
@@ -97,6 +110,13 @@ top38 <- tail(Data, n = 38)
 print(NROW(top38[top38$Income.Group == 'Lower middle income', ]))
 
 ```
+##Conclusion
+There are many factors that influence a country's GDP and overall prosperity. This data analysis effort looks at GDP and the categories of Income Group as provided by the World Bank data. Many thing were looked at in this analysis of Gross Domestic Products of different contries around the world.  This took multiple steps to get here.
+
+The first thing we had to do was get the data in a clean a usable format.  The cleaning and merging of the different dataframes left us with some incomplete records so we had to determine the number of usable records before we could go further into this study, we had 189 usable records.
+
+It was then time to look into specific question, we wanted to look at a specific data point from the data when ordered in a decending order, finding the 13th nation from the top when sorted in decending order is St. Kitts and Nevis.  Afterwards, we wanted to see amoungst the OECD and nonOECD groups was there a difference in their GDP, where we say the OECD high income group has a higher average GDP than the nonOECD high income gruop.  We then wanted to visualized the data.  Finally after seeing the data we were courious about how strong GDP is in the OECD scoring and checked the number of nations in the top 38 GDPs that were ranked in the OECD lower middle income group, which is 5.  
+
 
 ###Conclusion
 
@@ -144,4 +164,4 @@ How do i subset Data$Income.Group for only the 2 HIgh Income factors to run post
 
 GDPmatrix <- matrix(Data$GDP)
 rcorr (GDPmatrix, Data$Income.Group, type=c("pearson", "spearman"))
-chisq.test (GDPmatrix)  
+chisq.test (GDPmatrix)
