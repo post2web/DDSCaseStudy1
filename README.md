@@ -5,9 +5,6 @@
 * Open Makefile.Rmd with RStudio
 * Knit the Makefile.Rmd ( having R Working Directory set to the root of the project )
 
-## Troubleshooting
-* Make sure you have working directory set as the root of the project
-
 ## Files and folders
 * Makefile.Rmd - build the project in a Makefile stile
 * Analysis.Rmd - contains all analysis of the data
