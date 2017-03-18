@@ -23,8 +23,7 @@ This analysis takes a closer look at the relationship between GDP and Income Gro
 
 ## 1. With the merged data frame how many IDs matched?
 
-Merging the Data from the EDStats with the GDP data, it is expected that some of the row will not perfectly match up.
-Looking at the data from both sets and merging them together we end up with some data points that do not have information in the GDP, so we did not include those values in the data.
+After merging the Data from the EDStats with the GDP data, it is expected that some of the row will not perfectly match up.  Looking at the data from both sets and merging them together we end up with some data points that do not have information in the GDP, so we did not include those values in the data. So how many use full observations do we have?
 
 ```{r}
 # Load the merged tidy data file
@@ -34,9 +33,9 @@ cat('There are', nrow(Data), 'rows of clean merged data for further analysis.')
 
 
 ## 2. With the the data frame in decending order by GDP(United States last) what is the 13th value?
-So you maybe wondering where different countries lie within this list of countries or what country lies in which position.
-Here is an example of which county lie at the thirteenth position if we order the data in decending order.
-This lists row in unordered data frame, three letter country code, countyr name, GDP in millions of US dollars, and finaly which  Organization of Economic Cooperation and Developement group it belongs.
+So, you may be wondering where different countries lie within this list of countries or what country lies in which position.
+Here is an example of which county lie at the thirteenth position if we order the data in descending order.
+This lists row in unordered data frame, three letter country code, country name, GDP in millions of US dollars, and finally which Organization of Economic Cooperation and Development group it belongs.
 
 ```{r}
 # reorder by GDP
@@ -50,9 +49,9 @@ cat('The 13th country in the sorted dataset is:', as.character(Data$CountryName[
 We have talked about different groups as classified by the Organization of Economic Cooperation and Development (OECD).
 There are five different groups.
 They are the high income and member of the OECD, the high income and non-member OECD, the upper middle income, the middle income, and the low income groups.
-Now for us to look if there is a difference between being a member of the OECD makes a difference the only way we can do that is by comparing the the average incomes of the high income OECD to the high income nonOECD, since they are the only groups with a counter part.<br/> 
+Now for us to look if there is a difference between being a member of the OECD makes a difference the only way we can do that is by comparing the average incomes of the high income OECD to the high income nonOECD, since they are the only groups with a counterpart.<br/> 
 
-```{r }
+```{r}
 Data$GDP.rankings = rank(Data$GDP)
 OECD_rankings = Data$GDP.rankings[Data$Income.Group == "High income: OECD"]
 cat('The "High income: OECD" group has an average GDP of', mean(OECD_rankings),'millions in US dollars.')
@@ -62,7 +61,7 @@ cat('The high income nonOECD group had an average GDP of', mean(nonOECD_rankings
 ```
 You can see the OECD group has a higher average GDP.
 
-## 4.1 Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.
+## 4. Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.
 
 It is hard to visualize all the data of the countries we have in our data frame in our minds.
 To help with this we will plot that different groups in a chart below.
@@ -104,8 +103,8 @@ ggplot (Data, aes(x=Data$Income.Group, y=Data$GDP)) +
 
 ## 5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group. How many countries are "lower middle income" but within the 38 nations with the highest GDP?
 Looking at the chart above we can see that the groups are not built on GDP alone.
-The selection into the igh income and member of the OECD, the high income and non-member OECD, the upper middle income, the middle income, and the low income groups come from many variables.
-With this knowledge we can see that some members of the lower income groups may have the higher GDP then members of the high income group.
+The selection into the high income and member of the OECD, the high income and non-member OECD, the upper middle income, the middle income, and the low income groups come from many variables.
+With this knowledge, we can see that some members of the lower income groups may have the higher GDP then members of the high income group.
 So, how many of the countries in the top 38 GDPs are actual in the lower middle income?  
 
 ```{r message=F}
@@ -127,76 +126,13 @@ cat('There are', NROW(top38[top38$Income.Group == 'Lower middle income', ]), 'co
 ## Conclusion
 There are many factors that influence a country's GDP and overall prosperity.
 This data analysis effort looks at GDP and the categories of Income Group as provided by the World Bank data.
-Many thing were looked at in this analysis of Gross Domestic Products of different contries around the world.
+Many things were looked at in this analysis of Gross Domestic Products of different countries around the world.
 This took multiple steps to get here.
 
 The first thing we had to do was get the data in a clean a usable format.
 The cleaning and merging of the different dataframes left us with some incomplete records so we had to determine the number of usable records before we could go further into this study, we had 189 usable records.<br/>
 
-It was then time to look into specific question, we wanted to look at a specific data point from the data when ordered in a decending order, finding the 13th nation from the top when sorted in decending order is St. Kitts and Nevis.
-Afterwards, we wanted to see amoungst the OECD and nonOECD groups was there a difference in their GDP, where we say the OECD high income group has a higher average GDP than the nonOECD high income gruop.
+It was then time to consider specific question, we wanted to look at a specific data point from the data when ordered in a descending order, finding the 13th nation from the top when sorted in descending order is St. Kitts and Nevis.
+Afterwards, we wanted to see amongst the OECD and nonOECD groups was there a difference in their GDP, where we say the OECD high income group has a higher average GDP than the nonOECD high income group.
 We then wanted to visualized the data.
-Finally after seeing the data we were courious about how strong GDP is in the OECD scoring and checked the number of nations in the top 38 GDPs that were ranked in the OECD lower middle income group, which is 5.
-
-###Conclusion
-
-There are many factors that influence a country's GDP and overall prosperity.
-This data analysis effort looks at GDP and the categories of Income Group as provided by the World Bank data.
-The Income Group is made up of High Income: non OECD; High Income: OECD, Upper Middle Income; Lower Middle Income; and Low Income.
-All conclusions were measured in millions of USD$.<br/>
-
-Initial testing of this data includes a t-test, scatterplot and histogram of GDP.
-For the mean GDP t-test, we reject the null hypothesis that GDP = 0 based on a 95% confidence level that the true GDP mean is between $170,839.4 Million and $588,353.7 Million (pvalue = 0.0004264).
-
-```{r}
-GDPmatrix <- matrix(Data$GDP)
-t.test(GDPmatrix)
-```
-  
-The histogram of GDP shows a severe right skew, indicating an asysmetrical distribution.  
-
-```{r}
-col1 <- c("Min", "1st Qu.", "Median", "Mean", "3rd Qu.", "Max.")
-summary(Data$GDP, "html", caption = "Summary Statistics of GDP", col.names=col1, align='c' )
-
-hist(Data$GDP, breaks=5, main= "Histogram of GDP Data\n In Millions USD$", xlab = "GDP", ylab="Millions USD$", col="blue")
-```
-  
-This is due to a few countries with large GDP, like the United States at $16,244,600 Million.
-The right skewedness also indicates the mean is greater than the median, making the median at $28,240 Million a better overall indicator of GDP across the data set.<br/>
-
-A smooth scatterplot of GDP does not visually confirm a linear relationship.  
-```{r}
-smoothScatter (Data$GDP, ylab="GDP in Millions USD$")
-``` 
-  
-A second look at the category breakdown shows unexpected assignment of countries to Income Group categories.
-Below is a subset of the Income Group by countries with a GDP greater than $1,000,000 Million.
-```{r message=F}
-require('htmlTable')
-cutoff <- Data[Data$GDP >= 1000000,]
-htmlTable(
-  cutoff[,-5:-6],
-  caption = "Ranking in Income Groups"
-)
-
-```
-We see India with a GDP of $1,841,710 Million and yet its Income Group is Lower Middle Income.
-Additionally, China is the second largest GDP in this list of 189 countries at $8,227,103 Million.
-And yet, it is in the Lower Middle Income category as well.
-It is unknown what other attributes contribute to the assigning of countries to Income Group subcategories.
-As a warning, more information would be needed to explain the assignment to Income Group.<br/>
-
-The better approach to test the significance of the GDP related to Income Group is to use the Krusal-Wallis test, which tests for statistical difference across the Income Groups based on median.
-The Krusal- Wallis test indicates that the median of the five Income Groups are not the same (p-value= 0.000000000003617, df=4, chi-squared = 59.544).
-```{r}
-kruskal.test(Data$GDP ~ Data$Income.Group, data = Data)
-```
-From this limited data, we can determine 
-
-###Holding area:  TEMP!!   
-How do i subset Data$Income.Group for only the 2 HIgh Income factors to run post hoc test against each other. I think there may be useful data in the increased GDP of OECD countries vs those that are not.
-
-GDPmatrix <- matrix(Data$GDP)
-rcorr (GDPmatrix, Data$Income.Group, type=c("pearson", "spearman"))
-chisq.test (GDPmatrix)
+Finally, after seeing the data we were curious about how strong GDP is in the OECD scoring and checked the number of nations in the top 38 GDPs that were ranked in the OECD lower middle income group, which is 5.
