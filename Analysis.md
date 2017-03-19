@@ -17,7 +17,9 @@ This analysis takes a closer look at the relationship between GDP and Income Gro
 
 ## 1. With the merged data frame how many IDs matched?
 
-After merging the Data from the EDStats with the GDP data, it is expected that some of the row will not perfectly match up.  Looking at the data from both sets and merging them together we end up with some data points that do not have information in the GDP, so we did not include those values in the data. So how many use full observations do we have?
+After merging the Data from the EDStats with the GDP data, it is expected that some of the rows will not perfectly match up.
+Looking at the data from both sets and merging them together ends up with some data points that do not have information in the GDP, those values are excluded from analysis.
+So how many use full observations are present?
 
 
 ```r
@@ -32,8 +34,7 @@ cat('There are', nrow(Data), 'rows of clean merged data for further analysis.')
 
 
 ## 2. With the the data frame in decending order by GDP(United States last) what is the 13th value?
-So, you may be wondering where different countries lie within this list of countries or what country lies in which position.
-Here is an example of which county lie at the thirteenth position if we order the data in descending order.
+Here is an example of which county lie at the thirteenth position if the data is in descending order.
 This lists row in unordered data frame, three letter country code, country name, GDP in millions of US dollars, and finally which Organization of Economic Cooperation and Development group it belongs.
 
 
@@ -50,10 +51,9 @@ cat('The 13th country in the sorted dataset is:', as.character(Data$CountryName[
 
 ## 3. What are the average GDP rankings for the "High Income: OECD" and "High Income:nonOECD" groups?
 
-We have talked about different groups as classified by the Organization of Economic Cooperation and Development (OECD).
-There are five different groups.
+There are five different economic groups as classified by the Organization of Economic Cooperation and Development (OECD).
 They are the high income and member of the OECD, the high income and non-member OECD, the upper middle income, the middle income, and the low income groups.
-Now for us to look if there is a difference between being a member of the OECD makes a difference the only way we can do that is by comparing the average incomes of the high income OECD to the high income nonOECD, since they are the only groups with a counterpart.<br/> 
+Comparing average incomes of the high income OECD to average incomes in high income nonOECD indicates if there is a difference between being a member of OECD or not.<br/> 
 
 
 ```r
@@ -74,12 +74,12 @@ cat('The high income nonOECD group had an average GDP of', mean(nonOECD_rankings
 ```
 ## The high income nonOECD group had an average GDP of 98.34783 millions in US dollars.
 ```
-You can see the OECD group has a higher average GDP.
+Based on the analysis the OECD group has a higher average GDP.
 
 ## 4. Plot the GDP for all of the countries. Use ggplot2 to color your plot by Income Group.
 
-It is hard to visualize all the data of the countries we have in our data frame in our minds.
-To help with this we will plot that different groups in a chart below.
+Plotting the data frame's data helps visualize all the data concisely.
+The chart below is all the data in the data frame.
 
 ```r
 # Load needed packages
@@ -88,13 +88,6 @@ require(ggplot2)
 require(scales) 
 # For conclusion
 require (Hmisc) 
-```
-
-```
-## Warning: package 'Hmisc' was built under R version 3.3.3
-```
-
-```r
 # For histograms in conclusion
 require (lattice) 
 
@@ -127,10 +120,10 @@ ggplot (Data, aes(x=Data$Income.Group, y=Data$GDP)) +
 ![](Analysis_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 ## 5. Cut the GDP rankings into 5 seperate quantile groups. Making a table versus income group. How many countries are "lower middle income" but within the 38 nations with the highest GDP?
-Looking at the chart above we can see that the groups are not built on GDP alone.
+The chart above indicates that the groups are not built on GDP alone.
 The selection into the high income and member of the OECD, the high income and non-member OECD, the upper middle income, the middle income, and the low income groups come from many variables.
-With this knowledge, we can see that some members of the lower income groups may have the higher GDP then members of the high income group.
-So, how many of the countries in the top 38 GDPs are actual in the lower middle income?  
+These data shows some members of the lower income groups may have the higher GDP then members of the high income group.
+How many of the countries in the top 38 GDPs are actual in the lower middle income?  
 
 
 ```r
@@ -139,13 +132,6 @@ OrderData <- Data[order(Data$GDP.rankings), c(1:4)]
 colNames <- c("Country Name", "Country Code", "GDP in Millions USD$", "Income Group")
 # Load the thml table package
 require('htmlTable')
-```
-
-```
-## Warning: package 'htmlTable' was built under R version 3.3.3
-```
-
-```r
 # Print a table
 htmlTable(
   OrderData[c('CountryName', 'CountryCode', 'GDP', 'Income.Group')],
@@ -196,7 +182,7 @@ Ranking in Income Groups</td></tr>
 </tr>
 <tr>
 <td style='text-align: left;'>155</td>
-<td style='text-align: center;'>Sao Tome and Principe</td>
+<td style='text-align: center;'>S�o Tom� and Principe</td>
 <td style='text-align: center;'>STP</td>
 <td style='text-align: center;'>263</td>
 <td style='text-align: center;'>Lower middle income</td>
@@ -798,7 +784,7 @@ Ranking in Income Groups</td></tr>
 </tr>
 <tr>
 <td style='text-align: left;'>35</td>
-<td style='text-align: center;'>Cote d'Ivoire</td>
+<td style='text-align: center;'>C�te d'Ivoire</td>
 <td style='text-align: center;'>CIV</td>
 <td style='text-align: center;'>24680</td>
 <td style='text-align: center;'>Lower middle income</td>
@@ -1504,13 +1490,11 @@ cat('There are', NROW(top38[top38$Income.Group == 'Lower middle income', ]), 'co
 ## Conclusion
 There are many factors that influence a country's GDP and overall prosperity.
 This data analysis effort looks at GDP and the categories of Income Group as provided by the World Bank data.
-Many things were looked at in this analysis of Gross Domestic Products of different countries around the world.
-This took multiple steps to get here.
+Many data points were looked at in this analysis of Gross Domestic Products of different countries around the world.
 
-The first thing we had to do was get the data in a clean a usable format.
-The cleaning and merging of the different dataframes left us with some incomplete records so we had to determine the number of usable records before we could go further into this study, we had 189 usable records.<br/>
+Before analysis is possible, the data must be in a clean and usable format.
+Cleaning and merging of the different dataframes included with some incomplete records, which were removed from further analysis, leaving 189 usable records.<br/>
 
-It was then time to consider specific question, we wanted to look at a specific data point from the data when ordered in a descending order, finding the 13th nation from the top when sorted in descending order is St. Kitts and Nevis.
-Afterwards, we wanted to see amongst the OECD and nonOECD groups was there a difference in their GDP, where we say the OECD high income group has a higher average GDP than the nonOECD high income group.
-We then wanted to visualized the data.
-Finally, after seeing the data we were curious about how strong GDP is in the OECD scoring and checked the number of nations in the top 38 GDPs that were ranked in the OECD lower middle income group, which is 5.
+To check the cleaned data, the 13th nation from the top when sorted in descending order is manually and programmatically found to be St. Kitts and Nevis.
+Comparing the OECD and nonOECD groups shows a difference in their GDP, where the OECD high income group has a higher average GDP than the nonOECD high income group.
+Using data visualization tools helped determine how strong GDP is in the OECD scoring and checked the number of nations in the top 38 GDPs that were ranked in the OECD lower middle income group, which is 5.
