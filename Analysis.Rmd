@@ -125,14 +125,12 @@ cat('There are', NROW(top38[top38$Income.Group == 'Lower middle income', ]), 'co
 ```
 ## Conclusion
 There are many factors that influence a country's GDP and overall prosperity.
-This data analysis effort looks at GDP and the categories of Income Group as provided by the World Bank data.
-Many things were looked at in this analysis of Gross Domestic Products of different countries around the world.
-This took multiple steps to get here.
+This data analysis effort looks at GDP and the categories of Income Group as provided by the World Bank data.  After cleaning the data and putting it in a usable format, there are 189 usable records to manipulate. <br/>
 
-The first thing we had to do was get the data in a clean a usable format.
-The cleaning and merging of the different dataframes left us with some incomplete records so we had to determine the number of usable records before we could go further into this study, we had 189 usable records.<br/>
+The up front modularization of the Case Study into the Makefile and Analysis .Rmd files is the key to our success.  This organizational approach simplifies the work effort across the team. <br/>
 
-It was then time to consider specific question, we wanted to look at a specific data point from the data when ordered in a descending order, finding the 13th nation from the top when sorted in descending order is St. Kitts and Nevis.
-Afterwards, we wanted to see amongst the OECD and nonOECD groups was there a difference in their GDP, where we say the OECD high income group has a higher average GDP than the nonOECD high income group.
-We then wanted to visualized the data.
-Finally, after seeing the data we were curious about how strong GDP is in the OECD scoring and checked the number of nations in the top 38 GDPs that were ranked in the OECD lower middle income group, which is 5.
+Once the data is clean, asking and answering questions is straight forward. The result is the .HTML file that incorporates the questions, code, and answer.  Having clean data allows us to extend the scope of the Case Study to ask questions about the relationship between GDP and Income Group. This models real world scenarios in which data analysis starts with a model in mind, but can change upon discovery of new or absent relationships.  For example, the GDP data is heavily right skewed indicating median as a better indicator of GDP than mean.  Or, what else can we learn from the relationship of GDP to OECD and nonOECD countries?<br/>
+
+Visualization of data is incredibly important in telling a complete story and making the analysis useful. It is true that a picture is worth 1,000 words.  The GDP scatter plot showing the stacked GDP at the lower ends carries a greater impact that words alone. Data analysis requires thoughtful selection of visual aids to compliment the effort.<br/>
+
+This Case Study exercise demonstrates that data analysis projects are not trivial.  There is significant time and effort across many people to create an accurate, relevant, and usable analysis.<br/>
