@@ -1,5 +1,7 @@
 # DDSCaseStudy1
 
+This is a Case Study 1 project for DDS at SMU.
+
 ## Instructions for running the project
 * Clone the repo (or pull new changes):<br>
 * Open Makefile.Rmd with RStudio
@@ -20,7 +22,3 @@
 * source/merge.R - a script used for merging the two datasets
   * merges the data from gdp_tidy.csv and income_groups_tidy.csv files and creates merged_data.csv
 
-### Todo list: ( push as soon as you make a change )
-- [ ] Coment the code base
-- [ ] Add text to the R Markdown files
-- [ ] Make the output of the R Markdown files pretty - lvb started.
