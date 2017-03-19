@@ -1,17 +1,17 @@
-# this file is used to merge income_groups_tidy.csv + gdp_tidy.csv -> merged_data.csv
-# platform independent path for the data dir
+# This file is used to merge income_groups_tidy.csv + gdp_tidy.csv -> merged_data.csv
+# In order to run this file you need to have R Working Directory set to the root of the project.
+# Authors: Ivelin Angelov, Laura Bishop, Ethan Graham, Scott Gozdzialski
 
-# load tidy country data
+# Load tidy GDP data
 gdp <- read.table(file.path('data', "gdp_tidy.csv"), header = TRUE)
 
-# load tidy income_groups data
+# Load tidy income groups data
 income_groups <- read.table(file.path('data', "income_groups_tidy.csv"), header = TRUE)
 
-# merged datasets
+# Merged datasets on column "CountryCode"
 merged_data <- merge(gdp, income_groups, by = 'CountryCode')
 
-# write the resulting tidy data
+# Write the resulting tidy data into file data/merged_data.csv
 write.table(merged_data, file.path('data', "merged_data.csv"), row.names = FALSE)
 
-cat("Data was merged\n")
-
+cat("The two data files were merged successfully!\n")
