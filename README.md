@@ -3,9 +3,10 @@
 This is a Case Study 1 project for DDS at SMU.
 
 ## Instructions for running the project
-* Clone the repo (or pull new changes):<br>
-* Open Makefile.Rmd with RStudio
-* Knit the Makefile.Rmd ( having R Working Directory set to the root of the project )
+* Clone the repository:<br>
+  * git clone https://github.com/post2web/DDSCaseStudy1
+* Go in the DDSCaseStudy1 folder and open Makefile.Rmd with RStudio ( having R Working Directory set to the root of the project )
+* Knit the Makefile.Rmd 
 
 ## Files and folders
 * Makefile.Rmd - build the project in a Makefile stile
