@@ -89,52 +89,40 @@ rmarkdown::render("Analysis.Rmd")
   |                                                                       
   |                                                                 |   0%
   |                                                                       
-  |...                                                              |   4%
-##   ordinary text without R code
-## 
-## 
-  |                                                                       
   |......                                                           |   9%
-## label: unnamed-chunk-1 (with options) 
-## List of 1
-##  $ echo: logi FALSE
-## 
-## 
-  |                                                                       
-  |........                                                         |  13%
 ##   ordinary text without R code
 ## 
 ## 
   |                                                                       
-  |...........                                                      |  17%
+  |............                                                     |  18%
+## label: unnamed-chunk-1
+## 
+  |                                                                       
+  |..................                                               |  27%
+##   ordinary text without R code
+## 
+## 
+  |                                                                       
+  |........................                                         |  36%
 ## label: unnamed-chunk-2
 ## 
   |                                                                       
-  |..............                                                   |  22%
+  |..............................                                   |  45%
 ##   ordinary text without R code
 ## 
 ## 
   |                                                                       
-  |.................                                                |  26%
+  |...................................                              |  55%
 ## label: unnamed-chunk-3
 ## 
   |                                                                       
-  |....................                                             |  30%
+  |.........................................                        |  64%
 ##   ordinary text without R code
 ## 
 ## 
   |                                                                       
-  |.......................                                          |  35%
-## label: unnamed-chunk-4
-## 
-  |                                                                       
-  |.........................                                        |  39%
-##   ordinary text without R code
-## 
-## 
-  |                                                                       
-  |............................                                     |  43%
-## label: unnamed-chunk-5 (with options) 
+  |...............................................                  |  73%
+## label: unnamed-chunk-4 (with options) 
 ## List of 1
 ##  $ message: symbol F
 ```
@@ -142,77 +130,23 @@ rmarkdown::render("Analysis.Rmd")
 ```
 ## 
   |                                                                       
-  |...............................                                  |  48%
+  |.....................................................            |  82%
 ##   ordinary text without R code
-## 
-## 
-  |                                                                       
-  |..................................                               |  52%
-## label: unnamed-chunk-6 (with options) 
-## List of 1
-##  $ message: symbol F
-## 
-## 
-  |                                                                       
-  |.....................................                            |  57%
-##   ordinary text without R code
-## 
-## 
-  |                                                                       
-  |........................................                         |  61%
-## label: unnamed-chunk-7
-## 
-  |                                                                       
-  |..........................................                       |  65%
-##   ordinary text without R code
-## 
-## 
-  |                                                                       
-  |.............................................                    |  70%
-## label: unnamed-chunk-8
-```
-
-```
-## 
-  |                                                                       
-  |................................................                 |  74%
-##   ordinary text without R code
-## 
-## 
-  |                                                                       
-  |...................................................              |  78%
-## label: unnamed-chunk-9
-```
-
-```
-## 
-  |                                                                       
-  |......................................................           |  83%
-##   ordinary text without R code
-## 
-## 
-  |                                                                       
-  |.........................................................        |  87%
-## label: unnamed-chunk-10 (with options) 
-## List of 1
-##  $ message: symbol F
 ## 
 ## 
   |                                                                       
   |...........................................................      |  91%
-##   ordinary text without R code
+## label: unnamed-chunk-5 (with options) 
+## List of 1
+##  $ message: symbol F
 ## 
-## 
-  |                                                                       
-  |..............................................................   |  96%
-## label: unnamed-chunk-11
 ## 
   |                                                                       
   |.................................................................| 100%
 ##   ordinary text without R code
 ## 
 ## 
-## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS Analysis.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output Analysis.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /var/folders/df/2w6dv0r11pb69jhk8lzjjb_m0000gn/T//Rtmp25MzOh/rmarkdown-str129ce479616ad.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RTS -K512m -RTS Analysis.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output Analysis.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /Library/Frameworks/R.framework/Versions/3.3/Resources/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /var/folders/df/2w6dv0r11pb69jhk8lzjjb_m0000gn/T//Rtmp5DEopp/rmarkdown-str167242212aaba.html --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
 ```
 
 ```r
